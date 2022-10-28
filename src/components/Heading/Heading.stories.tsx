@@ -28,30 +28,65 @@ export const Default: StoryObj<HeadingProps> = {}
 export const ExtraSmall: StoryObj<HeadingProps> = {
   args: {
     size: 'xs'
+  },
+  argTypes: {
+    asChild: {
+      table: {
+        disable: true,
+      }
+    }
   }
 }
 
 export const Small: StoryObj<HeadingProps> = {
   args: {
     size: 'sm'
+  },
+  argTypes: {
+    asChild: {
+      table: {
+        disable: true,
+      }
+    }
   }
 }
 
 export const Large: StoryObj<HeadingProps> = {
   args: {
     size: 'lg'
+  },
+  argTypes: {
+    asChild: {
+      table: {
+        disable: true,
+      }
+    }
   }
 }
 
 export const ExtraLarge: StoryObj<HeadingProps> = {
   args: {
     size: 'xl'
+  },
+  argTypes: {
+    asChild: {
+      table: {
+        disable: true,
+      }
+    }
   }
 }
 
 export const Big: StoryObj<HeadingProps> = {
   args: {
     size: '2xl'
+  },
+  argTypes: {
+    asChild: {
+      table: {
+        disable: true,
+      }
+    }
   }
 }
 
@@ -64,6 +99,11 @@ export const CustomComponent: StoryObj<HeadingProps> = {
   },
   argTypes: {
     children: {
+      table: {
+        disable: true,
+      }
+    },
+    asChild: {
       table: {
         disable: true,
       }
