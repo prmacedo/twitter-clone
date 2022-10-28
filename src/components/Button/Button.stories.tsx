@@ -29,3 +29,27 @@ export default {
 } as Meta<ButtonProps>
 
 export const Default: StoryObj<ButtonProps> = {}
+
+export const Outline: StoryObj<ButtonProps> = {
+  args: {
+    style: 'outline'
+  }
+}
+
+export const Small: StoryObj<ButtonProps> = {
+  args: {
+    size: 'small'
+  }
+}
+
+export const Medium: StoryObj<ButtonProps> = {
+  args: {
+    size: 'medium'
+  }
+}
+
+export const Big: StoryObj<ButtonProps> = {
+  args: {
+    size: 'big'
+  }
+}
