@@ -1,7 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import clsx from "clsx";
 import { ReactNode } from 'react';
-import {} from '../Heading/Heading';
 
 export interface ButtonProps {
   size?: 'small' | 'medium' | 'big' | 'default';
@@ -35,7 +34,7 @@ export function Button({size = 'default', children, asChild, style = 'fill', col
         }
       )}
     >
-      Button
+      { children }
     </Comp>
   )
 }
