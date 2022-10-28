@@ -26,7 +26,7 @@ export function Heading({size = 'md', children, asChild, color = 'black'}: Headi
         {
           'text-black dark:text-white': color === 'black',
           'text-white': color === 'white',
-          'text-blue': color === 'blue'
+          'text-blue-1': color === 'blue'
         }
       )}
     >

@@ -22,7 +22,8 @@ module.exports = {
         '4xl': 23
       },
       colors: {
-        blue: '#1DA1F2',
+        'blue-1': '#1DA1F2',
+        'blue-2': '#1A8CD8',
         black: '#0F1419',
         red: '#F4245E',
         white: '#FFFFFF',

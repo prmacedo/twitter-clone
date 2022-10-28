@@ -25,7 +25,7 @@ export function Text({size = 'md', children, asChild, color = 'black'}: TextProp
         {
           'text-black dark:text-white': color === 'black',
           'text-white': color === 'white',
-          'text-blue': color === 'blue',
+          'text-blue-1': color === 'blue',
           'text-red': color === 'red',
           'text-dark-5 dark:text-dark-6': color === 'gray',
         }
