@@ -18,7 +18,8 @@ module.exports = {
         lg: 16,
         xl: 19,
         '2xl': 20,
-        '3xl': 21
+        '3xl': 21,
+        '4xl': 23
       },
       colors: {
         blue: '#1DA1F2',
