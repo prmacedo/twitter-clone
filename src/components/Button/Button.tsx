@@ -7,8 +7,8 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'big' | 'default';
   children: ReactNode;
   asChild?: boolean;
-  style: 'fill' | 'outline';
-  color: 'blue' | 'white';
+  style?: 'fill' | 'outline';
+  color?: 'blue' | 'white';
 }
 
 export function Button({size = 'default', children, asChild, style = 'fill', color = 'blue'}: ButtonProps){

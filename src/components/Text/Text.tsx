@@ -6,7 +6,7 @@ export interface TextProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   children: ReactNode;
   asChild?: boolean;
-  color: 'black' | 'white' | 'blue' | 'red' | 'gray';
+  color?: 'black' | 'white' | 'blue' | 'red' | 'gray';
 }
 
 export function Text({size = 'md', children, asChild, color = 'black'}: TextProps){

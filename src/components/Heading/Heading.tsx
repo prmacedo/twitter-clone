@@ -6,7 +6,7 @@ export interface HeadingProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   children: ReactNode;
   asChild?: boolean;
-  color: 'black' | 'white' | 'blue';
+  color?: 'black' | 'white' | 'blue';
 }
 
 export function Heading({size = 'md', children, asChild, color = 'black'}: HeadingProps){
