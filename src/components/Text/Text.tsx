@@ -7,15 +7,16 @@ export interface TextProps {
   children: ReactNode;
   asChild?: boolean;
   color?: 'black' | 'white' | 'blue' | 'red' | 'gray';
+  className?: string;
 }
 
-export function Text({size = 'md', children, asChild, color = 'black'}: TextProps){
+export function Text({size = 'md', children, asChild, color = 'black', className}: TextProps){
   const Comp = asChild ? Slot : 'span';
 
   return (
     <Comp className={
       clsx(
-        `font-sans font-medium`, {
+        `font-sans font-medium ${className}`, {
           'text-xs': size === 'xs',
           'text-sm': size === 'sm',
           'text-base': size === 'md',
