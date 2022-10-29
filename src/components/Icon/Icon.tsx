@@ -25,16 +25,18 @@ import { Schedule } from "../../icons/Schedule";
 import { Share } from "../../icons/Share";
 import { TopTweet } from "../../icons/TopTweet";
 
-export interface IconOptions {
+export interface IconSettings {
   icon: 'back' | 'bookmark' | 'bookmark-fill' | 'calendar' | 'comment' | 'ellipses' | 'emoji' | 'explore' | 'explore-fill' | 'gif' | 'home' | 'home-fill' | 'like' | 'like-fill' | 'lists' | 'lists-fill' | 'location' | 'logo' | 'media' | 'message' | 'message-fill' | 'more' | 'notification' | 'notification-fill' | 'poll' | 'profile' | 'profile-fill' | 'retweet' | 'schedule' | 'share' | 'top-tweet';
   color?: 'black' |  'blue' | 'red' | 'gray';
   size?: string;
+  className?: string;
 }
 
-export function Icon({ icon, color='black', size='1.5rem' }: IconOptions){
+export function Icon({ icon, className, color='black', size='1.5rem' }: IconSettings){
   let selectedIcon: JSX.Element;
 
   const classes = clsx(
+    className,
     {
       'fill-black dark:fill-white': (color === 'black'),
       'fill-blue-1': (color === 'blue'),

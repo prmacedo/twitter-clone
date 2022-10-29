@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Icon, IconOptions } from "./Icon";
+import { Icon, IconSettings } from "./Icon";
 
 export default {
   title: 'Components/Icon',
@@ -18,6 +18,6 @@ export default {
       control: 'select'
     }
   }
-} as Meta<IconOptions>
+} as Meta<IconSettings>
 
 export const Default: StoryObj = {}
