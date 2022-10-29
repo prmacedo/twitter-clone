@@ -8,7 +8,7 @@ export interface ButtonProps {
   asChild?: boolean;
   style?: 'fill' | 'outline';
   color?: 'blue' | 'white';
-  className: string;
+  className?: string;
 }
 
 export function Button({size = 'default', children, asChild, style = 'fill', color = 'blue', className}: ButtonProps){

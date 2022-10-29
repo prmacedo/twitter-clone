@@ -1,0 +1,3 @@
+.follow {
+  grid-template-columns: auto auto 1fr;
+}
