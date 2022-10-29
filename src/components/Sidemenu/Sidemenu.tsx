@@ -1,6 +1,7 @@
 import { Button } from "../Button/Button";
 import { Icon } from "../Icon/Icon";
 import { Navlink } from "../Navlink/Navlink";
+import { ShortProfile } from "../ShortProfile/ShortProfile";
 
 import './navbar.css';
 
@@ -10,10 +11,10 @@ export interface SidemenuProps {
 
 export function Sidemenu({ currentPage }: SidemenuProps) {
   return (
-    <nav className="navbar">
-      <div className="navbar__container">
-        <div className="flex flex-col gap-1 mb-2">
-          <Icon icon="logo" color="blue" className="ml-3"/>
+    <nav className="navbar h-screen">
+      <div className="navbar__container grid h-full p-2.5">
+        <div className="flex flex-col gap-1 mb-2.5">
+          <Icon icon="logo" color="blue" className="ml-2.5"/>
 
           <Navlink
             icon="home"
@@ -80,7 +81,9 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
           </Navlink>
         </div>
 
-        <Button size="big">Tweet</Button>
+        <Button size="big" className="w-auto self-start mr-5 box-border">Tweet</Button>
+
+        <ShortProfile />
       </div>
     </nav>
   )

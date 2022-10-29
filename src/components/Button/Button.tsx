@@ -8,15 +8,16 @@ export interface ButtonProps {
   asChild?: boolean;
   style?: 'fill' | 'outline';
   color?: 'blue' | 'white';
+  className: string;
 }
 
-export function Button({size = 'default', children, asChild, style = 'fill', color = 'blue'}: ButtonProps){
+export function Button({size = 'default', children, asChild, style = 'fill', color = 'blue', className}: ButtonProps){
   const Comp = asChild ? Slot : 'button';
 
   return (
     <Comp className={
       clsx(
-        `font-sans font-bold text-base px-4 py-2.5 rounded-full duration-300 transition-colors`, {
+        `font-sans font-bold text-base px-4 py-2.5 rounded-full duration-300 transition-colors ${className}`, {
           'w-full': size !== 'default'
         },
         {
