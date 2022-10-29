@@ -22,11 +22,12 @@ import { Poll } from "../../icons/Poll";
 import { Profile, ProfileFill } from "../../icons/Profile";
 import { Retweet } from "../../icons/Retweet";
 import { Schedule } from "../../icons/Schedule";
+import { Search } from "../../icons/Search";
 import { Share } from "../../icons/Share";
 import { TopTweet } from "../../icons/TopTweet";
 
 export interface IconSettings {
-  icon: 'back' | 'bookmark' | 'bookmark-fill' | 'calendar' | 'comment' | 'ellipses' | 'emoji' | 'explore' | 'explore-fill' | 'gif' | 'home' | 'home-fill' | 'like' | 'like-fill' | 'lists' | 'lists-fill' | 'location' | 'logo' | 'media' | 'message' | 'message-fill' | 'more' | 'notification' | 'notification-fill' | 'poll' | 'profile' | 'profile-fill' | 'retweet' | 'schedule' | 'share' | 'top-tweet';
+  icon: 'back' | 'bookmark' | 'bookmark-fill' | 'calendar' | 'comment' | 'ellipses' | 'emoji' | 'explore' | 'explore-fill' | 'gif' | 'home' | 'home-fill' | 'like' | 'like-fill' | 'lists' | 'lists-fill' | 'location' | 'logo' | 'media' | 'message' | 'message-fill' | 'more' | 'notification' | 'notification-fill' | 'poll' | 'profile' | 'profile-fill' | 'retweet' | 'schedule' | 'search' |'share' | 'top-tweet';
   color?: 'black' |  'blue' | 'red' | 'gray';
   size?: string;
   className?: string;
@@ -160,6 +161,10 @@ export function Icon({ icon, className, color='black', size='1.5rem' }: IconSett
 
     case 'schedule':
       selectedIcon = <Schedule className={classes} size={size}/>
+      break;
+
+    case 'search':
+      selectedIcon = <Search className={classes} size={size}/>
       break;
 
     case 'share':
