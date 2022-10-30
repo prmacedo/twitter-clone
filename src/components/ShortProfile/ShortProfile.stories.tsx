@@ -1,9 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { ShortProfile } from "./ShortProfile";
+import { ShortProfile, ShortProfileProps } from "./ShortProfile";
 
 export default {
   title: 'Components/ShortProfile',
   component: ShortProfile,
-} as Meta
+  args: {
+    profilePic: 'src/imgs/profile-pic-1.png'
+  }
+} as Meta<ShortProfileProps>
 
-export const Default: StoryObj = {}
+export const Default: StoryObj<ShortProfileProps> = {}

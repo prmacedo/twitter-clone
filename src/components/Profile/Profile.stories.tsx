@@ -6,7 +6,7 @@ export default {
   component: Profile,
   args: {
     banner: 'src/imgs/feed-1.png',
-    profilePic: 'src/imgs/profile-pic.png',
+    profilePic: 'src/imgs/profile-pic-1.png',
     name: 'Davide Biscuso',
     user: '@biscuttu',
     bio: 'Product Designer',
