@@ -13,7 +13,7 @@ export interface SidemenuProps {
 
 export function Sidemenu({ currentPage }: SidemenuProps) {
   return (
-    <nav className="navbar h-screen">
+    <nav className="navbar h-screen top-0 sticky">
       <div className="navbar__container grid h-full p-2.5">
         <div className="flex flex-col gap-1 mb-2.5">
           <Icon icon="logo" color="blue" className="ml-2.5"/>
