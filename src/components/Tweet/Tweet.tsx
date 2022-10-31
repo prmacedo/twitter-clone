@@ -9,7 +9,7 @@ export interface TweetProps {
   time: string;
   profilePic: string;
   description: string;
-  img: string;
+  img?: string;
 }
 
 export function Tweet({ name, user, time, profilePic, description, img }: TweetProps) {
@@ -30,7 +30,9 @@ export function Tweet({ name, user, time, profilePic, description, img }: TweetP
           <p>{ description }</p>
         </Text>
 
-        <img src={ img } alt={ description } className="w-full border-2 border-dark-7 dark:border-dark-4 rounded-2xl aspect-video" />
+        {
+          img && <img src={ img } alt={ description } className="w-full border-2 border-dark-7 dark:border-dark-4 rounded-2xl aspect-video object-cover" />
+        }
 
         <div className="feed__actions flex my-4">
           <div className="feed__iconGroup w-1/4">
