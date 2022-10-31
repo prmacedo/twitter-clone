@@ -7,14 +7,38 @@ import { Link } from "react-router-dom";
 export interface TweetProps {
   name: string;
   user: string;
-  time: string;
+  time: Date;
   profilePic: string;
   description: string;
   img?: string;
 }
 
+const timeDiff = (postTime: Date) => {
+  const now = new Date();
+  // Do your operations
+  const seconds = (now.getTime() - postTime.getTime()) / 1000;
+
+  let timeDiffString = '';
+
+  if (seconds < 1)
+    timeDiffString = 'now';
+  else if (seconds < 60)
+    timeDiffString = `${seconds.toFixed(0)}s`
+  else if (seconds < 3600)
+    timeDiffString = `${(seconds / 60).toFixed(0)}m`
+  else if (seconds < 3600 * 24)
+    timeDiffString = `${(seconds / (3600)).toFixed(0)}h`
+  else
+    timeDiffString = `${(seconds / (3600 * 24)).toFixed(0)}d`
+
+
+  return timeDiffString;
+}
+
 export function Tweet({ name, user, time, profilePic, description, img }: TweetProps) {
   const [ wasLiked, setWasLiked ] = useState(false);
+
+
   return (
     <div className="tweet flex items-start gap-2.5 pl-4 py-2.5 border-t-2 border-dark-7 dark:border-dark-4">
       <img src={ profilePic } alt={ name } className="w-12 rounded-full" />
@@ -24,7 +48,7 @@ export function Tweet({ name, user, time, profilePic, description, img }: TweetP
           <Heading size="xs">{ name }</Heading>
           <Text color="gray">{ user }</Text>
           <Text color="gray">·</Text>
-          <Text color="gray">{ time }</Text>
+          <Text color="gray">{ timeDiff(time) } </Text>
         </div>
 
         <Text className="mb-2.5" asChild>

@@ -51,7 +51,7 @@ export function Home() {
                   img={tweet.img || ''}
                   name={tweet.name}
                   profilePic={tweet.profilePic}
-                  time={tweet.time}
+                  time={new Date(tweet.time)}
                   user={tweet.user}
                 />
               ))
@@ -62,7 +62,7 @@ export function Home() {
               img="src/imgs/feed-1.png"
               name="Darlene Robertson"
               profilePic="src/imgs/profile-pic-4.png"
-              time="23s"
+              time={new Date(new Date().setSeconds(-3))}
               user="@johndoe"
             />
 
@@ -71,7 +71,7 @@ export function Home() {
               img="src/imgs/feed-2.png"
               name="Devon Lane"
               profilePic="src/imgs/profile-pic-5.png"
-              time="23s"
+              time={new Date(new Date().setSeconds(-60))}
               user="@johndoe"
             />
 
@@ -80,7 +80,7 @@ export function Home() {
               img="src/imgs/feed-3.jpg"
               name="Darlene Lane"
               profilePic="src/imgs/profile-pic-2.png"
-              time="23s"
+              time={new Date(new Date().setSeconds(-3600))}
               user="@johndoe"
             />
           </div>

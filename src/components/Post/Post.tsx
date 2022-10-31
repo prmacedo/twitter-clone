@@ -55,7 +55,7 @@ export function Post({ img }: PostProps) {
     const data = {
       name: 'Davide Biscuso',
       user: '@biscuttu',
-      time: 'now',
+      time: new Date(),
       description: text?.textContent,
       profilePic: img,
     } as TweetProps;
