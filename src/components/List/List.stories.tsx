@@ -2,10 +2,12 @@ import { Meta, StoryObj } from '@storybook/react'
 import { Follow } from '../Follow/Follow';
 import { NewsItem } from '../NewsItem/NewsItem';
 import { List, ListProps } from "./List";
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 export default {
   title: 'Components/List',
-  component: List
+  component: List,
+  decorators: [withRouter]
 } as Meta
 
 export const FollowList: StoryObj = {

@@ -1,8 +1,15 @@
+import { DarkModeContextProvider } from './context/DarkModeContext/DarkModeContext'
+import { FeedContextProvider } from './context/FeedContext/FeedContext'
+import { Router } from './routes'
 import './styles/global.css'
 
 function App() {
   return (
-    <h1>Hello World!</h1>
+    <DarkModeContextProvider>
+      <FeedContextProvider>
+        <Router />
+      </FeedContextProvider>
+    </DarkModeContextProvider>
   )
 }
 

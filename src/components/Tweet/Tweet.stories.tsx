@@ -1,9 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Tweet, TweetProps } from "./Tweet";
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 export default {
   title: 'Components/Tweet',
   component: Tweet,
+  decorators: [withRouter],
   args: {
     name: 'Devon Lane',
     user: '@johndoe',
