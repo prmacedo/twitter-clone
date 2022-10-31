@@ -1,15 +1,11 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { useDarkMode } from "../../context/DarkModeContext/DarkModeContext";
 import { Icon } from "../Icon/Icon";
 
 export interface HeaderRootProps {
   children: ReactNode;
 }
-
-// function toggleDarkMode() {
-//   const root = document.querySelector('#root');
-//   root?.classList.toggle('dark');
-// }
 
 function HeaderRoot({ children }: HeaderTextProps) {
   return (
@@ -21,9 +17,9 @@ function HeaderRoot({ children }: HeaderTextProps) {
 
 function HeaderLeftIcon() {
   return (
-    <div className="hover:bg-blue-1/10 active:bg-blue-1/20  box-border p-2 rounded-full cursor-pointer">
+    <Link to={"/"} className="hover:bg-blue-1/10 active:bg-blue-1/20  box-border p-2 rounded-full cursor-pointer">
       <Icon icon='back' color="blue" />
-    </div>
+    </Link>
   )
 }
 
