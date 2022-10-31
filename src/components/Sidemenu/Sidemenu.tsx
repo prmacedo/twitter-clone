@@ -8,7 +8,7 @@ import profilePic from "../../imgs/profile-pic-1.png";
 import './navbar.css';
 
 export interface SidemenuProps {
-  currentPage: 'home' | 'explore' | 'notifications' | 'messages' | 'bookmarks' | 'lists' | 'profile' | 'more';
+  currentPage: 'home' | 'explore' | 'notifications' | 'messages' | 'bookmarks' | 'lists' | 'profile' | 'more' | "";
 }
 
 export function Sidemenu({ currentPage }: SidemenuProps) {
@@ -22,6 +22,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
             icon="home"
             iconFill="home-fill"
             active={ currentPage === 'home' }
+            path="/"
             >
             Home
           </Navlink>
@@ -30,6 +31,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
             icon="explore"
             iconFill="explore-fill"
             active={ currentPage === 'explore' }
+            path="explore"
             >
             Explore
           </Navlink>
@@ -38,6 +40,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
             icon="notification"
             iconFill="notification-fill"
             active={ currentPage === 'notifications' }
+            path="notifications"
             >
             Notifications
           </Navlink>
@@ -46,6 +49,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
             icon="message"
             iconFill="message-fill"
             active={ currentPage === 'messages' }
+            path="messages"
             >
             Messages
           </Navlink>
@@ -54,6 +58,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
             icon="bookmark"
             iconFill="bookmark-fill"
             active={ currentPage === 'bookmarks' }
+            path="bookmarks"
             >
             Bookmarks
           </Navlink>
@@ -62,6 +67,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
             icon="lists"
             iconFill="lists-fill"
             active={ currentPage === 'lists' }
+            path="lists"
             >
             Lists
           </Navlink>
@@ -70,6 +76,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
             icon="profile"
             iconFill="profile-fill"
             active={ currentPage === 'profile' }
+            path="profile"
             >
             Profile
           </Navlink>
@@ -78,6 +85,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
             icon="more"
             iconFill="more"
             active={ currentPage === 'more' }
+            path="more"
             >
             More
           </Navlink>
