@@ -47,7 +47,7 @@ export function Profile() {
               img="src/imgs/feed-1.png"
               name="Davide Biscuso"
               profilePic="src/imgs/profile-pic-1.png"
-              time="23s"
+              time={new Date(new Date().setSeconds(-3))}
               user="@biscutto"
             />
 
@@ -56,7 +56,7 @@ export function Profile() {
               img="src/imgs/feed-2.png"
               name="Davide Biscuso"
               profilePic="src/imgs/profile-pic-1.png"
-              time="23s"
+              time={new Date(new Date().setSeconds(-3))}
               user="@biscutto"
             />
           </div>
