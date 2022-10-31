@@ -10,7 +10,7 @@ export interface ListProps {
 export function List({ title, children }: ListProps) {
   return (
     <div className="news bg-dark-8 rounded-lg dark:bg-dark-2 dark:border-dark-4">
-      <Heading size="lg" className="border-b-2 border-dark-7 py-2.5 px-4">{ title }</Heading>
+      <Heading size="lg" className="border-b-2 border-dark-7 dark:border-dark-4 py-2.5 px-4">{ title }</Heading>
 
       { children }
 
