@@ -86,5 +86,5 @@ Após instalar, execute o seguinte comando para acessar a documentação em ``lo
 Ou então execute o seguinte comando para acessar o projeto em ``localhost:5173``.
 
 ```
-  npm run vite
+  npm run dev
 ```
