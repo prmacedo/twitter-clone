@@ -15,10 +15,10 @@ export interface TweetProps {
 export function Tweet({ name, user, time, profilePic, description, img }: TweetProps) {
   const [ wasLiked, setWasLiked ] = useState(false);
   return (
-    <div className="tweet flex items-start gap-2.5 pl-4 pt-2.5 border-t-2 border-dark-7 dark:border-dark-4">
+    <div className="tweet flex items-start gap-2.5 pl-4 py-2.5 border-t-2 border-dark-7 dark:border-dark-4">
       <img src={ profilePic } alt={ name } className="w-12 rounded-full" />
 
-      <div className="feed__content pr-3">
+      <div className="feed__content pr-3 w-full">
         <div className="feed__header flex gap-1 items-center mb-1">
           <Heading size="xs">{ name }</Heading>
           <Text color="gray">{ user }</Text>
