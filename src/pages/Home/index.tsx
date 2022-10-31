@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Follow } from "../../components/Follow/Follow";
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
@@ -9,11 +10,18 @@ import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { Sidemenu } from "../../components/Sidemenu/Sidemenu";
 import { Spacer } from "../../components/Spacer/Spacer";
 import { Text } from "../../components/Text/Text";
-import { Tweet } from "../../components/Tweet/Tweet";
+import { Tweet, TweetProps } from "../../components/Tweet/Tweet";
+import { useFeed } from "../../context/FeedContext/FeedContext";
 
 import './styles.css';
 
 export function Home() {
+  const { tweets, setTweets } = useFeed();
+
+  useEffect(() => {
+    setTweets(JSON.parse(String(localStorage.getItem('tweets'))))
+  }, [])
+
   return (
     <div className="page overflow-y-auto">
       <main className="page__container flex justify-center bg-white dark:bg-dark-1">
@@ -34,6 +42,19 @@ export function Home() {
           <Post img="src/imgs/profile-pic-1.png" />
 
           <Spacer />
+
+          {
+            tweets?.map((tweet, index) => (
+              <Tweet key={index}
+                description={tweet.description}
+                img={tweet.img || ''}
+                name={tweet.name}
+                profilePic={tweet.profilePic}
+                time={tweet.time}
+                user={tweet.user}
+              />
+            ))
+          }
 
           <Tweet
             description="Tom is a big hurry."

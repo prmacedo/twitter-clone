@@ -11,7 +11,7 @@ interface FeedContextProviderProps {
 }
 
 const FeedContext = createContext<FeedContextProps>({
-  tweets: [],
+  tweets: JSON.parse(String(localStorage.getItem("tweets"))),
   setTweets: () => {}
 });
 
