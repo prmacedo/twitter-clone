@@ -6,7 +6,7 @@ export interface HeadingProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   children: ReactNode;
   asChild?: boolean;
-  color?: 'black' | 'white' | 'blue';
+  color?: 'black' | 'white' | 'blue' | 'gray';
   className?: string;
 }
 
@@ -27,7 +27,8 @@ export function Heading({size = 'md', children, asChild, color = 'black', classN
         {
           'text-black dark:text-white': color === 'black',
           'text-white': color === 'white',
-          'text-blue-1': color === 'blue'
+          'text-blue-1': color === 'blue',
+          'text-dark-5 dark:text-dark-6': color === 'gray'
         }
       )}
     >
