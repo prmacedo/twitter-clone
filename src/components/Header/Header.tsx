@@ -1,13 +1,18 @@
-import { Children, ReactNode } from "react";
+import { ReactNode } from "react";
 import { Icon } from "../Icon/Icon";
 
 export interface HeaderRootProps {
   children: ReactNode;
 }
 
+function toggleDarkMode() {
+  const root = document.querySelector('#root');
+  root?.classList.toggle('dark');
+}
+
 function HeaderRoot({ children }: HeaderTextProps) {
   return (
-    <div className="w-full h-14 flex gap-x-5 items-center border-b-2 border-b-dark-7 dark:border-b-dark-4">
+    <div className="w-full h-14 flex gap-x-5 px-4 items-center border-b-2 border-b-dark-7 dark:border-b-dark-4 sticky top-0 bg-white/80 dark:bg-dark-1/80">
       { children }
     </div>
   )
@@ -23,7 +28,7 @@ function HeaderLeftIcon() {
 
 function HeaderRightIcon() {
   return (
-    <div className="hover:bg-blue-1/10 active:bg-blue-1/20 box-border p-2 rounded-full cursor-pointer ml-auto">
+    <div className="hover:bg-blue-1/10 active:bg-blue-1/20 box-border p-2 rounded-full cursor-pointer ml-auto" onClick={() => toggleDarkMode()}>
       <Icon icon='top-tweet' color="blue" />
     </div>
   )
