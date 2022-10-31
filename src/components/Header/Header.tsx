@@ -1,14 +1,15 @@
 import { ReactNode } from "react";
+import { useDarkMode } from "../../context/DarkModeContext/DarkModeContext";
 import { Icon } from "../Icon/Icon";
 
 export interface HeaderRootProps {
   children: ReactNode;
 }
 
-function toggleDarkMode() {
-  const root = document.querySelector('#root');
-  root?.classList.toggle('dark');
-}
+// function toggleDarkMode() {
+//   const root = document.querySelector('#root');
+//   root?.classList.toggle('dark');
+// }
 
 function HeaderRoot({ children }: HeaderTextProps) {
   return (
@@ -27,8 +28,9 @@ function HeaderLeftIcon() {
 }
 
 function HeaderRightIcon() {
+  const { darkModeActive, setDarkModeActive } = useDarkMode();
   return (
-    <div className="hover:bg-blue-1/10 active:bg-blue-1/20 box-border p-2 rounded-full cursor-pointer ml-auto" onClick={() => toggleDarkMode()}>
+    <div className="hover:bg-blue-1/10 active:bg-blue-1/20 box-border p-2 rounded-full cursor-pointer ml-auto" onClick={() => setDarkModeActive(!darkModeActive)}>
       <Icon icon='top-tweet' color="blue" />
     </div>
   )
