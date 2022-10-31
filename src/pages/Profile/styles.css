@@ -1,0 +1,20 @@
+.profile-page {
+  display: grid;
+  grid-template-rows: 1fr auto;
+
+  height: 100vh;
+}
+
+.profile-page__container {}
+
+.profile-page__left {
+  width: 275px;
+}
+
+.profile-page__center {
+  width: 600px;
+}
+
+.profile-page__right {
+  width: 400px;
+}
