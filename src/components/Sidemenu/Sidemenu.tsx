@@ -3,6 +3,8 @@ import { Icon } from "../Icon/Icon";
 import { Navlink } from "../Navlink/Navlink";
 import { ShortProfile } from "../ShortProfile/ShortProfile";
 
+import profilePic from "../../imgs/profile-pic-1.png";
+
 import './navbar.css';
 
 export interface SidemenuProps {
@@ -83,7 +85,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
 
         <Button size="big" className="w-auto self-start mr-5 box-border">Tweet</Button>
 
-        <ShortProfile />
+        <ShortProfile profilePic={profilePic} />
       </div>
     </nav>
   )
