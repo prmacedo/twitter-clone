@@ -20,7 +20,7 @@ export function Follow({ name, user, img }: FollowProps) {
         <Text color="gray" size="lg" className="leading-5">{ user }</Text>
       </div>
 
-      <Button color="blue" style="outline" size="small" className="follow__button justify-self-end self-center max-w-[200px]">Follow</Button>
+      <Button color="blue" style="outline" className="follow__button justify-self-end self-center max-w-[200px]">Follow</Button>
     </div>
   )
 }
