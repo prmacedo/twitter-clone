@@ -6,6 +6,7 @@ import { ShortProfile } from "../ShortProfile/ShortProfile";
 import profilePic from "../../imgs/profile-pic-1.png";
 
 import './navbar.css';
+import { Link } from "react-router-dom";
 
 export interface SidemenuProps {
   currentPage: 'home' | 'explore' | 'notifications' | 'messages' | 'bookmarks' | 'lists' | 'profile' | 'more' | "";
@@ -91,7 +92,9 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
           </Navlink>
         </div>
 
-        <Button size="big" className="w-auto self-start mr-5 box-border">Tweet</Button>
+        <Link to={"not-found"} className="w-auto self-start mr-5 box-border">
+          <Button size="big">Tweet</Button>
+        </Link>
 
         <ShortProfile profilePic={profilePic} />
       </div>

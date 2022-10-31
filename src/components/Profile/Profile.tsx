@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
 import { Heading } from "../Heading/Heading";
 import { Icon } from "../Icon/Icon";
@@ -24,7 +25,9 @@ export function Profile({ banner, profilePic, name, user, bio, location, joined,
       </header>
 
       <div className="px-3 pb-3">
-        <Button style="outline" className="block ml-auto mt-2.5 mb-5">Edit profile</Button>
+        <Link to={"not-found"}>
+          <Button style="outline" className="block ml-auto mt-2.5 mb-5">Edit profile</Button>
+        </Link>
 
         <Heading size="xl">{ name }</Heading>
         <Text size="lg" className="mb-2.5" color="gray" asChild>

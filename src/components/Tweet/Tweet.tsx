@@ -2,6 +2,7 @@ import { Heading } from "../Heading/Heading";
 import { Text } from "../Text/Text";
 import { Icon } from "../Icon/Icon";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export interface TweetProps {
   name: string;
@@ -64,7 +65,9 @@ export function Tweet({ name, user, time, profilePic, description, img }: TweetP
           </div>
         </div>
 
-        <Text color="blue" className="hover:underline cursor-pointer">Show this thread</Text>
+        <Text color="blue" className="hover:underline cursor-pointer">
+          <Link to={"not-found"}>Show this thread</Link>
+        </Text>
       </div>
     </div>
 

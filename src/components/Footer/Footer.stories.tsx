@@ -1,9 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Footer } from "./Footer";
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 export default {
   title: 'Components/Footer',
   component: Footer,
+  decorators: [withRouter],
   args: {
     children: 'Footer',
     size: 'default',

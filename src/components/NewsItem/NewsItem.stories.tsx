@@ -1,9 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { NewsItem, NewsItemProps } from "./NewsItem";
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 export default {
   title: 'Components/NewsItem',
   component: NewsItem,
+  decorators: [withRouter],
   args: {
     subject: 'COVID 19',
     time: 'Last night',

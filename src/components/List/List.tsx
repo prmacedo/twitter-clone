@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { Heading } from "../Heading/Heading";
 import { Text } from "../Text/Text";
 
@@ -14,7 +15,11 @@ export function List({ title, children }: ListProps) {
 
       { children }
 
-      <Text color="blue" className="rounded-b-lg block p-4 hover:underline hover:bg-dark-7 dark:hover:bg-dark-3 cursor-pointer">Show more</Text>
+      <Text color="blue" className="rounded-b-lg block p-4 hover:underline hover:bg-dark-7 dark:hover:bg-dark-3 cursor-pointer" asChild>
+        <Link to={"not-found"}>
+          Show more
+        </Link>
+      </Text>
     </div>
   )
 }
