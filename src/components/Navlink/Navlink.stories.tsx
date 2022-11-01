@@ -1,9 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Navlink, NavlinkProps } from './Navlink';
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 export default {
   title: 'Components/Navlink',
   component: Navlink,
+  decorators: [withRouter],
   args: {
     icon: 'home',
     iconFill: 'home-fill',
