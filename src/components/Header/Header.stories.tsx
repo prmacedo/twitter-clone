@@ -2,10 +2,12 @@ import { Meta, StoryObj } from '@storybook/react'
 import { Heading } from '../Heading/Heading';
 import { Text } from '../Text/Text';
 import { Header, HeaderRootProps } from './Header';
+import { withRouter } from 'storybook-addon-react-router-v6';
 
 export default {
   title: 'Components/Header',
   component: Header.Root,
+  decorators: [withRouter],
   argTypes: {
     children: {
       table: {
