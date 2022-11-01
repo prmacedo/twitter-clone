@@ -7,6 +7,7 @@ import { NewsItem } from '../../components/NewsItem/NewsItem';
 import { Profile as ProfileComponent } from '../../components/Profile/Profile';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { Sidemenu } from '../../components/Sidemenu/Sidemenu';
+import { TabBar } from '../../components/TabBar/TabBar';
 import { Text } from '../../components/Text/Text';
 import { Tweet } from '../../components/Tweet/Tweet';
 import './styles.css';
@@ -41,6 +42,8 @@ export function Profile() {
               profilePic='src/imgs/profile-pic-1.png'
               user='@biscutto'
             />
+
+            <TabBar activeTab='tweets' />
 
             <Tweet
               description="Tom is a big hurry."
