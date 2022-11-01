@@ -9,7 +9,7 @@ export default {
   args: {
     name: 'Devon Lane',
     user: '@johndoe',
-    time: '23s',
+    time: new Date(new Date().setSeconds(-3)),
     description: 'Tom is a big hurry.',
     img: 'src/imgs/feed-1.png',
     profilePic: 'src/imgs/profile-pic-4.png'
