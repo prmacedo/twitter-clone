@@ -67,12 +67,10 @@ export function Post({ img }: PostProps) {
         console.log(data.img);
 
         dataList.unshift(data);
-        localStorage.setItem('tweets', JSON.stringify(dataList));
         setTweets(dataList);
       })
     } else {
       dataList.unshift(data);
-      localStorage.setItem('tweets', JSON.stringify(dataList));
       setTweets(dataList);
     }
 

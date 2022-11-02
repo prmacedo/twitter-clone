@@ -16,11 +16,7 @@ import { useFeed } from "../../context/FeedContext/FeedContext";
 import './styles.css';
 
 export function Home() {
-  const { tweets, setTweets } = useFeed();
-
-  useEffect(() => {
-    setTweets(JSON.parse(String(localStorage.getItem('tweets'))))
-  }, [])
+  const { tweets } = useFeed();
 
   return (
     <div className="page overflow-y-auto">
