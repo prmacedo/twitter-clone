@@ -1,8 +1,8 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
 interface DarkModeContextProps {
-  darkModeActive: Boolean;
-  setDarkModeActive: React.Dispatch<React.SetStateAction<Boolean>>;
+  darkModeActive: boolean;
+  setDarkModeActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface DarkModeContextProviderProps {
@@ -15,7 +15,7 @@ const DarkModeContext = createContext<DarkModeContextProps>({
 });
 
 export function DarkModeContextProvider({ children }: DarkModeContextProviderProps) {
-  const [darkModeActive, setDarkModeActive] = useState<Boolean>(JSON.parse(String(localStorage.getItem("darkMode"))) || false);
+  const [darkModeActive, setDarkModeActive] = useState<boolean>(JSON.parse(String(localStorage.getItem("darkMode"))) || false);
 
   useEffect(() => {
     setDarkModeActive(JSON.parse(String(localStorage.getItem("darkMode"))) || false);
