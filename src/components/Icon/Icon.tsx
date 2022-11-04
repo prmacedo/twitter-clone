@@ -1,6 +1,5 @@
 
 import clsx from "clsx";
-import { ReactNode } from "react";
 import { Back } from "../../icons/Back";
 import { Bookmark, BookmarkFill } from "../../icons/Bookmark";
 import { Calendar } from "../../icons/Calendar";
@@ -26,14 +25,18 @@ import { Search } from "../../icons/Search";
 import { Share } from "../../icons/Share";
 import { TopTweet } from "../../icons/TopTweet";
 
-export interface IconSettings {
-  icon: 'back' | 'bookmark' | 'bookmark-fill' | 'calendar' | 'comment' | 'ellipses' | 'emoji' | 'explore' | 'explore-fill' | 'gif' | 'home' | 'home-fill' | 'like' | 'like-fill' | 'lists' | 'lists-fill' | 'location' | 'logo' | 'media' | 'message' | 'message-fill' | 'more' | 'notification' | 'notification-fill' | 'poll' | 'profile' | 'profile-fill' | 'retweet' | 'schedule' | 'search' |'share' | 'top-tweet';
-  color?: 'black' |  'blue' | 'red' | 'gray';
+export interface IconOptions {
+  icon: 'back' | 'bookmark' | 'calendar' | 'comment' | 'ellipses' | 'emoji' | 'explore' | 'gif' | 'home' | 'like' | 'lists' | 'location' | 'logo' | 'media' | 'message' | 'more' | 'notification' | 'poll' | 'profile' | 'retweet' | 'schedule' | 'search' | 'share' | 'top-tweet';
+}
+
+export interface IconSettings extends IconOptions {
+  color?: 'black' | 'blue' | 'red' | 'gray';
   size?: string;
+  fill?: boolean;
   className?: string;
 }
 
-export function Icon({ icon, className, color='black', size='1.5rem' }: IconSettings){
+export function Icon({ icon, className, color='black', size='1.5rem', fill=false }: IconSettings){
   let selectedIcon: JSX.Element;
 
   const classes = clsx(
@@ -52,11 +55,7 @@ export function Icon({ icon, className, color='black', size='1.5rem' }: IconSett
       break;
 
     case 'bookmark':
-      selectedIcon = <Bookmark className={classes} size={size}/>
-      break;
-
-    case 'bookmark-fill':
-      selectedIcon = <BookmarkFill className={classes} size={size}/>
+      selectedIcon = fill ? <BookmarkFill className={classes} size={size}/> : <Bookmark className={classes} size={size}/>
       break;
 
     case 'calendar':
@@ -76,11 +75,7 @@ export function Icon({ icon, className, color='black', size='1.5rem' }: IconSett
       break;
 
     case 'explore':
-      selectedIcon = <Explore className={classes} size={size}/>
-      break;
-
-    case 'explore-fill':
-      selectedIcon = <ExploreFill className={classes} size={size}/>
+      selectedIcon = fill ? <ExploreFill className={classes} size={size}/> : <Explore className={classes} size={size}/>
       break;
 
     case 'gif':
@@ -88,27 +83,15 @@ export function Icon({ icon, className, color='black', size='1.5rem' }: IconSett
       break;
 
     case 'home':
-      selectedIcon = <Home className={classes} size={size}/>
-      break;
-
-    case 'home-fill':
-      selectedIcon = <HomeFill className={classes} size={size}/>
+      selectedIcon = fill ? <HomeFill className={classes} size={size}/> : <Home className={classes} size={size}/>
       break;
 
     case 'like':
-      selectedIcon = <Like className={classes} size={size}/>
-      break;
-
-    case 'like-fill':
-      selectedIcon = <LikeFill className={classes} size={size}/>
+      selectedIcon = fill ? <LikeFill className={classes} size={size}/> : <Like className={classes} size={size}/>
       break;
 
     case 'lists':
-      selectedIcon = <Lists className={classes} size={size}/>
-      break;
-
-    case 'lists-fill':
-      selectedIcon = <ListsFill className={classes} size={size}/>
+      selectedIcon = fill ? <ListsFill className={classes} size={size}/> : <Lists className={classes} size={size}/>
       break;
 
     case 'location':
@@ -124,11 +107,7 @@ export function Icon({ icon, className, color='black', size='1.5rem' }: IconSett
       break;
 
     case 'message':
-      selectedIcon = <Message className={classes} size={size}/>
-      break;
-
-    case 'message-fill':
-      selectedIcon = <MessageFill className={classes} size={size}/>
+      selectedIcon = fill ? <MessageFill className={classes} size={size}/> : <Message className={classes} size={size}/>
       break;
 
     case 'more':
@@ -136,11 +115,7 @@ export function Icon({ icon, className, color='black', size='1.5rem' }: IconSett
       break;
 
     case 'notification':
-      selectedIcon = <Notification className={classes} size={size}/>
-      break;
-
-    case 'notification-fill':
-      selectedIcon = <NotificationFill className={classes} size={size}/>
+      selectedIcon = fill ? <NotificationFill className={classes} size={size}/> : <Notification className={classes} size={size}/>
       break;
 
     case 'poll':
@@ -148,11 +123,7 @@ export function Icon({ icon, className, color='black', size='1.5rem' }: IconSett
       break;
 
     case 'profile':
-      selectedIcon = <Profile className={classes} size={size}/>
-      break;
-
-    case 'profile-fill':
-      selectedIcon = <ProfileFill className={classes} size={size}/>
+      selectedIcon = fill ? <ProfileFill className={classes} size={size}/> : <Profile className={classes} size={size}/>
       break;
 
     case 'retweet':
@@ -179,6 +150,7 @@ export function Icon({ icon, className, color='black', size='1.5rem' }: IconSett
       selectedIcon = <span>Ícone indisponível</span>
       break;
   }
+
   return (
     selectedIcon
   )

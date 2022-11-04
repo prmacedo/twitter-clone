@@ -14,10 +14,52 @@ export default {
       control: 'inline-radio'
     },
     icon: {
-      options: ['back', 'bookmark', 'bookmark-fill', 'calendar', 'comment', 'ellipses', 'emoji', 'explore', 'explore-fill', 'gif', 'home', 'home-fill', 'like', 'like-fill', 'lists', 'lists-fill', 'location', 'logo', 'media', 'message', 'message-fill', 'more', 'notification', 'notification-fill', 'poll', 'profile', 'profile-fill', 'retweet', 'schedule', 'share', 'top-tweet'],
+      options: ['back', 'bookmark', 'calendar', 'comment', 'ellipses', 'emoji', 'explore', 'gif', 'home', 'like', 'lists', 'location', 'logo', 'media', 'message', 'more', 'notification', 'poll', 'profile', 'retweet', 'schedule', 'share', 'top-tweet'],
       control: 'select'
     }
   }
 } as Meta<IconSettings>
 
-export const Default: StoryObj = {}
+export const Default: StoryObj<IconSettings> = {
+  argTypes: {
+    size: {
+      table: {
+        disable: true
+      }
+    },
+    fill: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    }
+  }
+}
+
+export const Fill: StoryObj<IconSettings> = {
+  args: {
+    color: 'blue',
+    icon: 'bookmark',
+    fill: false
+  },
+  argTypes: {
+    icon: {
+      options: ['bookmark', 'explore', 'home', 'like', 'lists', 'message', 'notification', 'profile'],
+      control: 'select'
+    },
+    size: {
+      table: {
+        disable: true
+      }
+    },
+    className: {
+      table: {
+        disable: true
+      }
+    }
+  }
+}

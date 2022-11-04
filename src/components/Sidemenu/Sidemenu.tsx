@@ -21,73 +21,65 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
 
           <Navlink
             icon="home"
-            iconFill="home-fill"
             active={ currentPage === 'home' }
             path="/"
-            >
+          >
             Home
           </Navlink>
 
           <Navlink
             icon="explore"
-            iconFill="explore-fill"
             active={ currentPage === 'explore' }
             path="explore"
-            >
+          >
             Explore
           </Navlink>
 
           <Navlink
             icon="notification"
-            iconFill="notification-fill"
             active={ currentPage === 'notifications' }
             path="notifications"
-            >
+          >
             Notifications
           </Navlink>
 
           <Navlink
             icon="message"
-            iconFill="message-fill"
             active={ currentPage === 'messages' }
             path="messages"
-            >
+          >
             Messages
           </Navlink>
 
           <Navlink
             icon="bookmark"
-            iconFill="bookmark-fill"
             active={ currentPage === 'bookmarks' }
             path="bookmarks"
-            >
+          >
             Bookmarks
           </Navlink>
 
           <Navlink
             icon="lists"
-            iconFill="lists-fill"
             active={ currentPage === 'lists' }
             path="lists"
-            >
+          >
             Lists
           </Navlink>
 
           <Navlink
             icon="profile"
-            iconFill="profile-fill"
             active={ currentPage === 'profile' }
             path="profile"
-            >
+          >
             Profile
           </Navlink>
 
           <Navlink
             icon="more"
-            iconFill="more"
             active={ currentPage === 'more' }
             path="more"
-            >
+          >
             More
           </Navlink>
         </div>
