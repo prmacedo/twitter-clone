@@ -3,16 +3,14 @@ import { Heading } from "../Heading/Heading";
 import { Icon } from "../Icon/Icon";
 import { Text } from "../Text/Text";
 
-import './shortProfile.css';
-
 export interface ShortProfileProps {
   profilePic: string;
 }
 
 export function ShortProfile({ profilePic }: ShortProfileProps){
   return (
-   <div className="shortProfile grid items-center gap-2.5">
-    <img src={profilePic} alt="Davide Biscuso" className="shortProfile__image rounded-full" />
+   <div className="grid grid-cols-[auto_auto_1fr] items-center gap-2.5">
+    <img src={profilePic} alt="Davide Biscuso" className="w-[2.5rem] rounded-full" />
 
     <div className="shortProfile__text">
       <Heading color="black" size="sm" className="leading-4">Davide Biscuso</Heading>

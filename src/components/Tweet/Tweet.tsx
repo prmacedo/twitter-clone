@@ -76,7 +76,7 @@ export function Tweet({ name, user, time, profilePic, description, img }: TweetP
 
           <div className="feed__iconGroup w-1/4">
             <div className="cursor-pointer inline-flex gap-2.5"  onClick={() => setWasLiked(!wasLiked)}>
-              <Icon size="1.125rem" icon={ wasLiked ? 'like-fill' : 'like' } color={ wasLiked ? 'red' : 'gray' } />
+              <Icon size="1.125rem" icon='like' fill={ wasLiked } color={ wasLiked ? 'red' : 'gray' } />
               <Text size="xs" color={ wasLiked ? 'red' : 'gray' }>6.2k</Text>
             </div>
           </div>

@@ -1,7 +1,0 @@
-.navbar {}
-
-.navbar__container {
-  width: 275px;
-
-  grid-template-rows: auto 1fr auto;
-}

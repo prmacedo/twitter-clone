@@ -1,9 +1,8 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-import { TweetProps } from '../../components/Tweet/Tweet';
 
 interface DarkModeContextProps {
-  darkModeActive: Boolean;
-  setDarkModeActive: React.Dispatch<React.SetStateAction<Boolean>>;
+  darkModeActive: boolean;
+  setDarkModeActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface DarkModeContextProviderProps {
@@ -16,16 +15,21 @@ const DarkModeContext = createContext<DarkModeContextProps>({
 });
 
 export function DarkModeContextProvider({ children }: DarkModeContextProviderProps) {
-  const [darkModeActive, setDarkModeActive] = useState<Boolean>(JSON.parse(String(localStorage.getItem("darkMode"))));
+  const [darkModeActive, setDarkModeActive] = useState<boolean>(JSON.parse(String(localStorage.getItem("darkMode"))) || false);
 
   useEffect(() => {
-    setDarkModeActive(JSON.parse(String(localStorage.getItem("darkMode"))));
+    setDarkModeActive(JSON.parse(String(localStorage.getItem("darkMode"))) || false);
   }, []);
 
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkModeActive));
     const root = document.querySelector('#root');
-    root?.classList.toggle('dark');
+
+    if (darkModeActive) {
+      root?.classList.add('dark');
+    } else {
+      root?.classList.remove('dark');
+    }
   }, [darkModeActive]);
 
   return (

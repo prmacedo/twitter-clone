@@ -10,18 +10,17 @@ import { Sidemenu } from '../../components/Sidemenu/Sidemenu';
 import { TabBar } from '../../components/TabBar/TabBar';
 import { Text } from '../../components/Text/Text';
 import { Tweet } from '../../components/Tweet/Tweet';
-import './styles.css';
 
 export function Profile() {
   return (
-    <div className="profile-page overflow-y-auto">
+    <div className="grid grid-rows-[1fr_auto] h-screen overflow-y-auto">
       <main className="profile-page__container flex justify-center bg-white dark:bg-dark-1">
-        <div className="profile-page__left">
+        <div className="w-[275px]">
           <Sidemenu currentPage="profile" />
         </div>
 
         <div className="profile-page__content flex">
-          <div className="profile-page__center border-x-2 border-x-dark-7 dark:border-x-dark-4">
+          <div className="w-[600px] border-x-2 border-x-dark-7 dark:border-x-dark-4">
             <Header.Root>
               <Header.LeftIcon />
               <Header.Text>
@@ -64,7 +63,7 @@ export function Profile() {
             />
           </div>
 
-          <div className="profile-page__right">
+          <div className="w-[400px]">
             <div className="flex flex-col gap-4 justify-start items-start py-2.5 px-7">
               <SearchBar />
 

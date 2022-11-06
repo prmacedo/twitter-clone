@@ -4,7 +4,8 @@ import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Text } from '../Text/Text';
 import { TweetProps } from '../Tweet/Tweet';
-import './post.css';
+
+import styles from './Post.module.scss';
 
 export interface PostProps {
   img: string;
@@ -50,7 +51,10 @@ export function Post({ img }: PostProps) {
     if (isEmpty) return;
 
     const dataList = JSON.parse(String(localStorage.getItem('tweets'))) || [];
-    const text = document.querySelector(".post__text") as Element;
+    const text = document.querySelector(`.${styles.post__text}`) as Element;
+
+    console.log(text);
+
 
     const data = {
       name: 'Davide Biscuso',
@@ -67,12 +71,10 @@ export function Post({ img }: PostProps) {
         console.log(data.img);
 
         dataList.unshift(data);
-        localStorage.setItem('tweets', JSON.stringify(dataList));
         setTweets(dataList);
       })
     } else {
       dataList.unshift(data);
-      localStorage.setItem('tweets', JSON.stringify(dataList));
       setTweets(dataList);
     }
 
@@ -85,9 +87,9 @@ export function Post({ img }: PostProps) {
     <div className="post flex gap-x-3 px-4 py-2.5">
       <img src={ img } alt="User profile picture" className="w-12 rounded-full self-start" />
 
-      <div className="post__content max-w-full">
+      <div className={[styles.post__content, "max-w-full"].join(' ')}>
         <div
-          className="post__text flex text-dark-5 dark:text-dark-6 text-2xl bg-transparent outline-none w-full mb-4"
+          className={[styles.post__text ,"flex text-dark-5 dark:text-dark-6 text-2xl bg-transparent outline-none w-full mb-4"].join(' ')}
           onKeyDown = { (evt) => limitCharacterNumber(evt) }
           onKeyUp = { (evt) => setIsEmpty( evt.currentTarget.textContent?.length === 0 ) }
           contentEditable
@@ -106,7 +108,7 @@ export function Post({ img }: PostProps) {
         }
 
         <div className="post__actions flex justify-between">
-          <div className="post__icons flex items-center gap-x-4">
+          <div className={[styles.post__icons, "flex items-center gap-x-4"].join(' ')}>
             <label className='cursor-pointer rounded-full box-border p-2 duration-150 hover:bg-blue-1/10 active:bg-blue-1/20'>
               <input type="file" accept='image/png, image/jpeg' className='hidden' onChange={(evt) => handleUploadImage(evt)} />
               <Icon icon='media' color='blue' size='1.5rem' />
