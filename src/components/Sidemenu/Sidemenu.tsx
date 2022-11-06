@@ -1,12 +1,11 @@
+import { Link } from "react-router-dom";
+
 import { Button } from "../Button/Button";
 import { Icon } from "../Icon/Icon";
 import { Navlink } from "../Navlink/Navlink";
 import { ShortProfile } from "../ShortProfile/ShortProfile";
 
 import profilePic from "../../imgs/profile-pic-1.png";
-
-import './navbar.css';
-import { Link } from "react-router-dom";
 
 export interface SidemenuProps {
   currentPage: 'home' | 'explore' | 'notifications' | 'messages' | 'bookmarks' | 'lists' | 'profile' | 'more' | "";
@@ -15,7 +14,7 @@ export interface SidemenuProps {
 export function Sidemenu({ currentPage }: SidemenuProps) {
   return (
     <nav className="navbar h-screen top-0 sticky">
-      <div className="navbar__container grid h-full p-2.5">
+      <div className="grid grid-rows-[auto_1fr_auto] w-[275px] h-full p-2.5">
         <div className="flex flex-col gap-1 mb-2.5">
           <Icon icon="logo" color="blue" className="ml-2.5"/>
 

@@ -1,7 +1,0 @@
-.shortProfile {
-  grid-template-columns: auto auto 1fr;
-}
-
-.shortProfile__image {
-  width: 2.5rem;
-}
