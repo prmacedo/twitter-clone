@@ -22,6 +22,10 @@ export function FeedContextProvider({ children }: FeedContextProviderProps) {
     setTweets(JSON.parse(String(localStorage.getItem("tweets"))))
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('tweets', JSON.stringify(tweets));
+  }, [tweets]);
+
   return (
     <FeedContext.Provider
       value={{

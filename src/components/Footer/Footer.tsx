@@ -3,12 +3,10 @@ import { Button } from "../Button/Button";
 import { Heading } from "../Heading/Heading";
 import { Text } from "../Text/Text";
 
-import './footer.css';
-
 export function Footer(){
   return (
     <footer className='w-full bg-blue-1 flex justify-center py-3 sticky bottom-0 left-0'>
-      <div className="footer__content flex items-center justify-between">
+      <div className="w-[990px] ml-[275px] flex items-center justify-between">
         <div className="footer__text">
           <Heading color="white">
             Don't miss what is happening

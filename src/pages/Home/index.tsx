@@ -13,24 +13,18 @@ import { Text } from "../../components/Text/Text";
 import { Tweet, TweetProps } from "../../components/Tweet/Tweet";
 import { useFeed } from "../../context/FeedContext/FeedContext";
 
-import './styles.css';
-
 export function Home() {
-  const { tweets, setTweets } = useFeed();
-
-  useEffect(() => {
-    setTweets(JSON.parse(String(localStorage.getItem('tweets'))))
-  }, [])
+  const { tweets } = useFeed();
 
   return (
-    <div className="page overflow-y-auto">
+    <div className="grid gird-rows-[1fr_auto] h-screen overflow-y-auto">
       <main className="page__container flex justify-center bg-white dark:bg-dark-1">
-        <div className="page__left">
+        <div className="w-[275px]">
           <Sidemenu currentPage="home" />
         </div>
 
         <div className="page__content flex">
-          <div className="page__center border-x-2 border-x-dark-7 dark:border-x-dark-4">
+          <div className="w-[600px] border-x-2 border-x-dark-7 dark:border-x-dark-4">
             <Header.Root>
               <Header.Text>
                 <Heading>
@@ -85,7 +79,7 @@ export function Home() {
             />
           </div>
 
-          <div className="page__right">
+          <div className="w-[400px]">
             <div className="flex flex-col gap-4 justify-start items-start py-2.5 px-7">
               <SearchBar />
 
