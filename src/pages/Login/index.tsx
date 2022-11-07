@@ -1,14 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import clsx from "clsx";
 import { Button } from "../../components/Button/Button";
 import { Heading } from "../../components/Heading/Heading";
 import { Icon } from "../../components/Icon/Icon";
 import { Input } from "../../components/Input/Input";
 import { Text } from "../../components/Text/Text";
+import { useData } from "../../context/DataContext/DataContext";
+import { useUser } from "../../context/UserContext/UserContext";
+import { useDarkMode } from "../../context/DarkModeContext/DarkModeContext";
 
 export function Login() {
   const [ loginCredential, setLoginCredential ] = useState("");
   const [ password, setPassword ] = useState("");
+  const [ isValid, setIsValid ] = useState(true);
+
+  const { setDarkModeActive } = useDarkMode();
+
+  const { users } = useData();
+  const { login, logout } = useUser();
+
+  function handleSubmit(evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    evt.preventDefault();
+
+    if (!loginCredential || !password) {
+      setIsValid(false);
+      return;
+    }
+
+    const user = users.find(user => (user.email === loginCredential && user.password));
+
+    if (user) {
+      setIsValid(true);
+      login(user);
+    } else {
+      setIsValid(false);
+    }
+  }
+
+  useEffect(() => {
+    logout();
+    setDarkModeActive(false);
+  }, []);
 
   return (
     <div className="h-screen w-full flex justify-center items-center">
@@ -17,23 +50,25 @@ export function Login() {
 
         <Heading size="3xl" className="my-9">Log in to Twitter</Heading>
 
-        <Input
-          type="text"
-          placeholder="Phone number, email address"
-          value={ loginCredential }
-          onChange={ (evt) => setLoginCredential(evt.target.value) }
-          className="mb-6"
+        <form>
+          <Input
+            type="text"
+            placeholder="Phone number, email address"
+            value={ loginCredential }
+            onChange={ (evt) => setLoginCredential(evt.target.value) }
+            className={ clsx("mb-6", { "border-2 border-red": !isValid }) }
+            />
+
+          <Input
+            type="password"
+            placeholder="Password"
+            value={ password }
+            onChange={ (evt) => setPassword(evt.target.value) }
+            className={ clsx("mb-6", { "border-2 border-red": !isValid }) }
           />
 
-        <Input
-          type="password"
-          placeholder="Password"
-          value={ password }
-          onChange={ (evt) => setPassword(evt.target.value) }
-          className="mb-6"
-        />
-
-        <Button size="big">Log In</Button>
+          <Button size="big" onClick={ (evt) => handleSubmit(evt) }>Log In</Button>
+        </form>
 
         <div className="flex justify-between mt-10">
           <Link to="not-found">
