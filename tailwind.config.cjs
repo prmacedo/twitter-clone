@@ -19,7 +19,8 @@ module.exports = {
         xl: 19,
         '2xl': 20,
         '3xl': 21,
-        '4xl': 23
+        '4xl': 23,
+        '5xl': 42
       },
       colors: {
         'blue-1': '#1DA1F2',
