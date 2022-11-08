@@ -5,7 +5,7 @@ import { Text } from "../Text/Text";
 
 export function Footer(){
   return (
-    <footer className='w-full bg-blue-1 flex justify-center py-3 sticky bottom-0 left-0'>
+    <footer className='w-full bg-blue-1 flex justify-center py-3 fixed bottom-0 left-0'>
       <div className="w-[990px] ml-[275px] flex items-center justify-between">
         <div className="footer__text">
           <Heading color="white">

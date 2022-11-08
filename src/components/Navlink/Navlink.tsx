@@ -6,7 +6,7 @@ import { Icon, IconOptions } from "../Icon/Icon";
 export interface NavlinkProps extends IconOptions {
   children: ReactNode;
   active: boolean;
-  path: '/' | 'explore' | 'notifications' | 'messages' | 'bookmarks' | 'lists' | 'profile' | 'more' ;
+  path: '/' | 'explore' | 'notifications' | 'messages' | 'bookmarks' | 'lists' | 'profile' | 'more' | 'settings' ;
 }
 
 export function Navlink({ icon, children, active, path }: NavlinkProps) {
