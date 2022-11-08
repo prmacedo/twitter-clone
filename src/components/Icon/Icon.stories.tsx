@@ -14,7 +14,7 @@ export default {
       control: 'inline-radio'
     },
     icon: {
-      options: ['back', 'bookmark', 'calendar', 'comment', 'ellipses', 'emoji', 'explore', 'gif', 'home', 'like', 'lists', 'location', 'logo', 'media', 'message', 'more', 'notification', 'poll', 'profile', 'retweet', 'schedule', 'settings', 'share', 'top-tweet'],
+      options: ['apple', 'back', 'bookmark', 'calendar', 'comment', 'ellipses', 'emoji', 'explore', 'google', 'gif', 'home', 'like', 'lists', 'location', 'logo', 'media', 'message', 'more', 'notification', 'poll', 'profile', 'retweet', 'schedule', 'settings', 'share', 'top-tweet'],
       control: 'select'
     }
   }
