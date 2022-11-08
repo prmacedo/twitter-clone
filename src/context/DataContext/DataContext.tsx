@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState } from "react";
+import { usersMock } from "../../mockup/Users";
 import { IUser } from "../../types/IUser";
 
 export interface DataContextProps {
@@ -16,12 +17,7 @@ const DataContext = createContext<DataContextProps>({
 });
 
 export function DataContextProvider({ children }: DataContextProviderProps) {
-  const [ users, setUsers ] = useState<IUser[]>([
-    {
-      email: 'davidebiscuso@gmail.com',
-      password: 'twitter123'
-    }
-  ]);
+  const [ users, setUsers ] = useState<IUser[]>(usersMock);
 
   return (
     <DataContext.Provider
