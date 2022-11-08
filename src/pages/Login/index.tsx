@@ -8,14 +8,11 @@ import { Input } from "../../components/Input/Input";
 import { Text } from "../../components/Text/Text";
 import { useData } from "../../context/DataContext/DataContext";
 import { useUser } from "../../context/UserContext/UserContext";
-import { useDarkMode } from "../../context/DarkModeContext/DarkModeContext";
 
 export function Login() {
   const [ loginCredential, setLoginCredential ] = useState("");
   const [ password, setPassword ] = useState("");
   const [ isValid, setIsValid ] = useState(true);
-
-  const { setDarkModeActive } = useDarkMode();
 
   const { users } = useData();
   const { login, logout } = useUser();
@@ -40,11 +37,10 @@ export function Login() {
 
   useEffect(() => {
     logout();
-    setDarkModeActive(false);
   }, []);
 
   return (
-    <div className="h-screen w-full flex justify-center items-center">
+    <div className="h-screen w-full flex justify-center items-center bg-white dark:bg-dark-1">
       <div className="grid w-[450px] max-w-[100%]">
         <Icon icon="logo" color="blue" size="2.5rem" />
 
