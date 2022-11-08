@@ -7,6 +7,7 @@ interface UserContextProps {
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
   login: Function;
   logout: Function;
+  isLoggedIn: boolean;
 }
 
 interface UserContextProviderProps {
@@ -17,22 +18,26 @@ const UserContext = createContext<UserContextProps>({
   user: emptyUser,
   setUser: () => {},
   login: () => {},
-  logout: () => {}
+  logout: () => {},
+  isLoggedIn: (localStorage.getItem("user") ? true : false)
 });
 
 export function UserContextProvider({ children }: UserContextProviderProps) {
   const [ user, setUser ] = useState<IUser>(emptyUser);
+  const [ isLoggedIn, setIsLoggedIn ] = useState<boolean>(localStorage.getItem("user") ? true : false);
   const navigate = useNavigate();
 
   function login(userData: IUser) {
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
+    setIsLoggedIn(true);
     navigate('/');
   }
 
   function logout() {
     setUser(emptyUser);
     localStorage.removeItem("user");
+    setIsLoggedIn(false);
     navigate('/login');
   }
 
@@ -42,7 +47,8 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         user,
         setUser,
         login,
-        logout
+        logout,
+        isLoggedIn
       }}
     >
       { children }
@@ -52,6 +58,6 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
 
 export function useUser() {
   const context = useContext(UserContext);
-  const { user, setUser, login, logout } = context;
-  return { user, setUser, login, logout };
+  const { user, setUser, login, logout, isLoggedIn } = context;
+  return { user, setUser, login, logout, isLoggedIn };
 }
