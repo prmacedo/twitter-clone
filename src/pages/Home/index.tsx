@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Follow } from "../../components/Follow/Follow";
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
@@ -10,7 +9,7 @@ import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { Sidemenu } from "../../components/Sidemenu/Sidemenu";
 import { Spacer } from "../../components/Spacer/Spacer";
 import { Text } from "../../components/Text/Text";
-import { Tweet, TweetProps } from "../../components/Tweet/Tweet";
+import { Tweet } from "../../components/Tweet/Tweet";
 import { useFeed } from "../../context/FeedContext/FeedContext";
 import { useUser } from "../../context/UserContext/UserContext";
 
@@ -38,7 +37,7 @@ export function Home() {
               <Header.RightIcon />
             </Header.Root>
 
-            <Post img="src/imgs/profile-pic-1.png" />
+            <Post />
 
             <Spacer />
 

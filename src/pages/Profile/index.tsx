@@ -10,10 +10,13 @@ import { Sidemenu } from '../../components/Sidemenu/Sidemenu';
 import { TabBar } from '../../components/TabBar/TabBar';
 import { Text } from '../../components/Text/Text';
 import { Tweet } from '../../components/Tweet/Tweet';
+import { useUser } from '../../context/UserContext/UserContext';
 
 export function Profile() {
+  const { isLoggedIn } = useUser();
+
   return (
-    <div className="grid grid-rows-[1fr_auto] h-screen overflow-y-auto">
+    <div className="grid grid-rows-[1fr_auto]">
       <main className="profile-page__container flex justify-center bg-white dark:bg-dark-1">
         <div className="w-[275px]">
           <Sidemenu currentPage="profile" />
@@ -30,17 +33,7 @@ export function Profile() {
               </Header.Text>
             </Header.Root>
 
-            <ProfileComponent
-              banner='src/imgs/banner.png'
-              bio='Product Designer'
-              followers={72}
-              following={569}
-              joined='September 2011'
-              location='London'
-              name='Davide Biscuso'
-              profilePic='src/imgs/profile-pic-1.png'
-              user='@biscutto'
-            />
+            <ProfileComponent />
 
             <TabBar activeTab='tweets' />
 
@@ -113,7 +106,10 @@ export function Profile() {
         </div>
 
       </main>
-      <Footer />
+      {
+        !isLoggedIn &&
+        <Footer />
+      }
     </div>
   )
 }
