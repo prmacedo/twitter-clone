@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { ReactNode } from 'react';
 
 export interface HeadingProps {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
   children: ReactNode;
   asChild?: boolean;
   color?: 'black' | 'white' | 'blue' | 'gray';
@@ -24,6 +24,8 @@ export function Heading({size = 'md', children, asChild, color = 'black', classN
           'text-3xl': size === 'xl',
           'text-4xl': size === '2xl',
           'text-5xl': size === '3xl',
+          'text-6xl': size === '4xl',
+          'text-7xl': size === '5xl',
         },
         {
           'text-black dark:text-white': color === 'black',
