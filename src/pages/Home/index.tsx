@@ -12,15 +12,17 @@ import { Spacer } from "../../components/Spacer/Spacer";
 import { Text } from "../../components/Text/Text";
 import { Tweet, TweetProps } from "../../components/Tweet/Tweet";
 import { useFeed } from "../../context/FeedContext/FeedContext";
+import { useUser } from "../../context/UserContext/UserContext";
 
 export function Home() {
   const { tweets } = useFeed();
+  const { isLoggedIn } = useUser();
 
   return (
-    <div className="grid gird-rows-[1fr_auto] h-screen overflow-y-auto">
+    <div className="grid gird-rows-[1fr_auto]">
       <main className="page__container flex justify-center bg-white dark:bg-dark-1">
         <div className="w-[275px]">
-          <Sidemenu currentPage="home" />
+          <Sidemenu currentPage={isLoggedIn ? "home" : "explore"} />
         </div>
 
         <div className="page__content flex">
@@ -28,7 +30,9 @@ export function Home() {
             <Header.Root>
               <Header.Text>
                 <Heading>
-                  Home
+                  {
+                    isLoggedIn ? "Home" : "Explore"
+                  }
                 </Heading>
               </Header.Text>
               <Header.RightIcon />
@@ -129,7 +133,10 @@ export function Home() {
         </div>
       </main>
 
-      <Footer />
+      {
+        !isLoggedIn &&
+        <Footer />
+      }
     </div>
   )
 }
