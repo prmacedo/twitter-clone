@@ -7,14 +7,15 @@ import { TweetProps } from '../Tweet/Tweet';
 
 import styles from './Post.module.scss';
 
-export interface PostProps {
-  img: string;
-}
+import defaultPofilePic from '../../imgs/default-profile-pic.svg';
+import { useUser } from '../../context/UserContext/UserContext';
 
-export function Post({ img }: PostProps) {
+export function Post() {
   const [isEmpty, setIsEmpty] = useState(true);
   const [selectedImage, setSelectedImage] = useState<Blob | null>();
-  const { tweets, setTweets } = useFeed();
+
+  const { setTweets } = useFeed();
+  const { user } = useUser();
 
 
   const characterLimit = 380;
@@ -61,7 +62,7 @@ export function Post({ img }: PostProps) {
       user: '@biscuttu',
       time: new Date(),
       description: text?.textContent,
-      profilePic: img,
+      profilePic: user.profilePic,
     } as TweetProps;
 
     if (selectedImage) {
@@ -85,7 +86,7 @@ export function Post({ img }: PostProps) {
 
   return (
     <div className="post flex gap-x-3 px-4 py-2.5">
-      <img src={ img } alt="User profile picture" className="w-12 rounded-full self-start" />
+      <img src={ user.profilePic || defaultPofilePic } alt="User profile picture" className="w-12 rounded-full self-start" />
 
       <div className={[styles.post__content, "max-w-full"].join(' ')}>
         <div
