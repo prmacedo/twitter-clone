@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { emptyUser, IUser } from "../../types/IUser";
 
@@ -40,6 +40,14 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     setIsLoggedIn(false);
     navigate('/login');
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setUser(JSON.parse((localStorage.getItem("user") || '')));
+    } else {
+      setUser(emptyUser);
+    }
+  }, []);
 
   return (
     <UserContext.Provider
