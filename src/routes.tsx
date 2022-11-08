@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { PageNotFound } from "./pages/PageNotFound";
 import { Profile } from "./pages/Profile";
+import { SignUp } from "./pages/SignUp";
 
 export function Router() {
   return (
@@ -13,6 +14,7 @@ export function Router() {
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </UserContextProvider>
