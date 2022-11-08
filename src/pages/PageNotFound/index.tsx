@@ -6,7 +6,7 @@ import { Text } from "../../components/Text/Text";
 
 export function PageNotFound() {
   return (
-    <div className="grid grid-rows-[1fr_auto] h-screen overflow-y-auto">
+    <div className="grid grid-rows-[1fr_auto] h-screen">
       <main className="not-found__container flex justify-center bg-white dark:bg-dark-1">
         <div className="w-[275px]">
           <Sidemenu currentPage="" />
