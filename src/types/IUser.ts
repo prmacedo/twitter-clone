@@ -6,7 +6,7 @@ export interface IUser {
   user: string;
   bio: string;
   location: string;
-  createdAt: Date;
+  createdAt: string;
   following: number;
   followers: number;
   profilePic?: string;

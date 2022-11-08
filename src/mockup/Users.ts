@@ -9,7 +9,7 @@ export const usersMock = [
     user: 'biscutto',
     bio: 'Product Designer',
     location: 'London',
-    createdAt: new Date('11-01-2011'),
+    createdAt: '11-01-2011',
     following: 569,
     followers: 72,
     profilePic: 'src/imgs/profile-pic-1.png',
