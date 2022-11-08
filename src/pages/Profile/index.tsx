@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Follow } from '../../components/Follow/Follow';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
@@ -14,6 +16,13 @@ import { useUser } from '../../context/UserContext/UserContext';
 
 export function Profile() {
   const { isLoggedIn } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('../')
+    }
+  }, []);
 
   return (
     <div className="grid grid-rows-[1fr_auto]">
@@ -106,10 +115,8 @@ export function Profile() {
         </div>
 
       </main>
-      {
-        !isLoggedIn &&
-        <Footer />
-      }
+
+      <Footer />
     </div>
   )
 }
