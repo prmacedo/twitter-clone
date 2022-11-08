@@ -18,11 +18,11 @@ export function Footer(){
         </div>
 
         <div className="footer__btnGroup grid grid-cols-2 gap-x-3">
-          <Link to={"not-found"}>
+          <Link to={"../login"}>
             <Button style="outline" color="white">Log in</Button>
           </Link>
 
-          <Link to={"not-found"}>
+          <Link to={"../signup"}>
             <Button color="white">Sign Up</Button>
           </Link>
         </div>

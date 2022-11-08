@@ -15,7 +15,7 @@ export function Login() {
   const [ isValid, setIsValid ] = useState(true);
 
   const { users } = useData();
-  const { login, logout } = useUser();
+  const { login, resetUser } = useUser();
 
   function handleSubmit(evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     evt.preventDefault();
@@ -36,7 +36,7 @@ export function Login() {
   }
 
   useEffect(() => {
-    logout();
+    resetUser();
   }, []);
 
   return (
@@ -67,11 +67,11 @@ export function Login() {
         </form>
 
         <div className="flex justify-between mt-10">
-          <Link to="not-found">
+          <Link to="../not-found">
             <Text color="blue" className="hover:underline">Forgot password?</Text>
           </Link>
 
-          <Link to="not-found">
+          <Link to="../signup">
             <Text color="blue" className="hover:underline">Sign up to Twitter</Text>
           </Link>
         </div>

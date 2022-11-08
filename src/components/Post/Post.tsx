@@ -157,13 +157,13 @@ export function Post() {
 
             <div className='flex gap-x-4 mt-4'>
             <Button style="outline" color="blue" size='medium' className='text-center' asChild>
-              <Link to={"login"}>
+              <Link to={"../login"}>
                 Log in
               </Link>
             </Button>
 
             <Button color="blue" size='medium' className='text-center' asChild>
-              <Link to={"not-found"}>
+              <Link to={"../signup"}>
                 Sign Up
               </Link>
             </Button>

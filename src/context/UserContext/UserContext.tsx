@@ -7,6 +7,7 @@ interface UserContextProps {
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
   login: Function;
   logout: Function;
+  resetUser: Function;
   isLoggedIn: boolean;
 }
 
@@ -19,6 +20,7 @@ const UserContext = createContext<UserContextProps>({
   setUser: () => {},
   login: () => {},
   logout: () => {},
+  resetUser: () => {},
   isLoggedIn: (localStorage.getItem("user") ? true : false)
 });
 
@@ -35,10 +37,14 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
   }
 
   function logout() {
+    resetUser();
+    navigate('/login');
+  }
+
+  function resetUser() {
     setUser(emptyUser);
     localStorage.removeItem("user");
     setIsLoggedIn(false);
-    navigate('/login');
   }
 
   useEffect(() => {
@@ -56,7 +62,8 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
         setUser,
         login,
         logout,
-        isLoggedIn
+        isLoggedIn,
+        resetUser
       }}
     >
       { children }
@@ -66,6 +73,6 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
 
 export function useUser() {
   const context = useContext(UserContext);
-  const { user, setUser, login, logout, isLoggedIn } = context;
-  return { user, setUser, login, logout, isLoggedIn };
+  const { user, setUser, login, logout, isLoggedIn, resetUser } = context;
+  return { user, setUser, login, logout, isLoggedIn, resetUser };
 }
