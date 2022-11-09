@@ -1,4 +1,4 @@
-import { ITweets, orderTweetsDesc } from "../types/ITweets";
+import { ITweets } from "../types/ITweets";
 
 export const tweetsMock = [
   {
@@ -12,10 +12,15 @@ export const tweetsMock = [
     ],
     comments:[
       {
-        id: '51e41155-c31e-4640-82a3-dbebf675615c',
-        userId: '1fa7882c-957d-43e0-b8f0-1ea2cd6bb79f',
-        comment: 'Nice!'
-      }
+        id: 'ba9992e9-499b-4a09-96bc-485517185e0c',
+        userId: 'a46f68fd-716a-443d-a806-50329999282b',
+        time: new Date('Nov 09 2022 20:57 GMT-0300').getTime(),
+        description: 'GG',
+        likes: [],
+        comments:[],
+        retweets: 0,
+        share: 0,
+      },
     ],
     retweets: 0,
     share: 0,
@@ -32,9 +37,14 @@ export const tweetsMock = [
     ],
     comments:[
       {
-        id: '9a5b094e-3cff-4fc6-81d0-0d480c40e291',
+        id: '834fcb1f-02ae-4c2d-8675-52f530ed185e',
         userId: 'a46f68fd-716a-443d-a806-50329999282b',
-        comment: 'Good job!'
+        time: new Date('Nov 09 2022 20:57 GMT-0300').getTime(),
+        description: 'Woow',
+        likes: [],
+        comments:[],
+        retweets: 0,
+        share: 0,
       }
     ],
     retweets: 0,
@@ -62,4 +72,4 @@ export const tweetsMock = [
     retweets: 0,
     share: 0,
   },
-].sort(orderTweetsDesc) as ITweets[];
+].sort((a, b) => b.time - a.time) as ITweets[];

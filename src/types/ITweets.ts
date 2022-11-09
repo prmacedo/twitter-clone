@@ -1,4 +1,3 @@
-import { IComments } from "./IComments";
 import { ILikes } from "./ILikes";
 
 export interface ITweets {
@@ -8,7 +7,7 @@ export interface ITweets {
   description: string;
   img?: string;
   likes: ILikes[];
-  comments: IComments[];
+  comments: ITweets[];
   retweets: number;
   share: number;
 }
