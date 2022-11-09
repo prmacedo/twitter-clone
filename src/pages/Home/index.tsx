@@ -1,9 +1,9 @@
-import { Follow } from "../../components/Follow/Follow";
+import { FollowItem } from "../../components/List/FollowItem/FollowItem";
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import { Heading } from "../../components/Heading/Heading";
 import { List } from "../../components/List/List";
-import { NewsItem } from "../../components/NewsItem/NewsItem";
+import { NewsItem } from "../../components/List/NewsItem/NewsItem";
 import { Post } from "../../components/Post/Post";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { Sidemenu } from "../../components/Sidemenu/Sidemenu";
@@ -83,12 +83,12 @@ export function Home() {
               </List>
 
               <List title="Who to follow">
-                <Follow
+                <FollowItem
                   img="src/imgs/profile-pic-2.png"
                   name="Bessie Cooper"
                   user="@alessandroveronezi"
                 />
-                <Follow
+                <FollowItem
                   img="src/imgs/profile-pic-3.png"
                   name="Jenny Wilson"
                   user="@gabrielcantarin"

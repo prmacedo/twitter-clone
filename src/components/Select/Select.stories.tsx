@@ -8,7 +8,7 @@ const options = [
 ]
 
 export default {
-  title: 'Components/Select',
+  title: 'Form Components/Select',
   component: Select,
   args: {
     placeholder: "Placeholder",

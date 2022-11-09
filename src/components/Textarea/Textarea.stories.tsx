@@ -4,7 +4,7 @@ import { withRouter } from 'storybook-addon-react-router-v6';
 import { ITweets } from '../../types/ITweets';
 
 export default {
-  title: 'Components/Textarea',
+  title: 'Form Components/Textarea',
   component: Textarea,
   decorators: [withRouter],
   args: {

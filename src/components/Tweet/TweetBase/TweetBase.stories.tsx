@@ -5,7 +5,7 @@ import { ITweets } from '../../../types/ITweets';
 import { tweetsMock } from '../../../mockup/Tweets';
 
 export default {
-  title: 'Components/TweetItem',
+  title: 'Components/Tweet/Base',
   component: TweetBase,
   decorators: [withRouter],
   args: {

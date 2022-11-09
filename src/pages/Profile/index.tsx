@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Follow } from '../../components/Follow/Follow';
+import { FollowItem } from '../../components/List/FollowItem/FollowItem';
 import { Header } from '../../components/Header/Header';
 import { Heading } from '../../components/Heading/Heading';
 import { List } from '../../components/List/List';
-import { NewsItem } from '../../components/NewsItem/NewsItem';
+import { NewsItem } from '../../components/List/NewsItem/NewsItem';
 import { Profile as ProfileComponent } from '../../components/Profile/Profile';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { Sidemenu } from '../../components/Sidemenu/Sidemenu';
@@ -93,12 +93,12 @@ export function Profile() {
               </List>
 
               <List title="Who to follow">
-                <Follow
+                <FollowItem
                   img="src/imgs/profile-pic-2.png"
                   name="Bessie Cooper"
                   user="@alessandroveronezi"
                 />
-                <Follow
+                <FollowItem
                   img="src/imgs/profile-pic-3.png"
                   name="Jenny Wilson"
                   user="@gabrielcantarin"

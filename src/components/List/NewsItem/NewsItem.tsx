@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Heading } from "../Heading/Heading";
-import { Text } from "../Text/Text";
+import { Heading } from "../../Heading/Heading";
+import { Text } from "../../Text/Text";
 
 export interface NewsItemProps {
   subject: string;

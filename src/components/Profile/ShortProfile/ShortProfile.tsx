@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { useUser } from "../../context/UserContext/UserContext";
-import { Heading } from "../Heading/Heading";
-import { Icon } from "../Icon/Icon";
-import { Text } from "../Text/Text";
+import { useUser } from "../../../context/UserContext/UserContext";
+import { Heading } from "../../Heading/Heading";
+import { Icon } from "../../Icon/Icon";
+import { Text } from "../../Text/Text";
 
-import defaultPic from "../../imgs/default-profile-pic.svg";
+import defaultPic from "../../../imgs/default-profile-pic.svg";
 
 export function ShortProfile(){
   const { user } = useUser();
