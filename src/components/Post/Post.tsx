@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Text } from '../Text/Text';
-import { TweetProps } from '../Tweet/Tweet';
 import { Modal } from '../Modal/Modal';
 import { useFeed } from '../../context/FeedContext/FeedContext';
 import { useUser } from '../../context/UserContext/UserContext';
+import { v4 as uuidv4 } from 'uuid';
 
 import styles from './Post.module.scss';
 
 import defaultPofilePic from '../../imgs/default-profile-pic.svg';
 import { Heading } from '../Heading/Heading';
 import { Link } from 'react-router-dom';
+import { ITweets } from '../../types/ITweets';
 
 export function Post() {
   const [isEmpty, setIsEmpty] = useState(true);
@@ -66,12 +67,15 @@ export function Post() {
 
 
     const data = {
-      name: 'Davide Biscuso',
-      user: '@biscuttu',
-      time: new Date(),
-      description: text?.textContent,
-      profilePic: user.profilePic,
-    } as TweetProps;
+      id: uuidv4(),
+      userId: user.id,
+      description: text.textContent,
+      time: new Date().getTime(),
+      likes: [],
+      comments: [],
+      retweets: 0,
+      share: 0
+    } as ITweets;
 
     if (selectedImage) {
       getBase64(selectedImage)
