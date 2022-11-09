@@ -42,7 +42,7 @@ export function Tweet({ id, userId, time, description, img, likes, comments, ret
   }
 
   function handleLike() {
-    if (likeStatus === 'notLiked' || likeStatus === 'unliked') {
+    if (isLoggedIn && (likeStatus === 'notLiked' || likeStatus === 'unliked')) {
       setLikeStatus('justLiked');
     } else {
       setLikeStatus('unliked');
