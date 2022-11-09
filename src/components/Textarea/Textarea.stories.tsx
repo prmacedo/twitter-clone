@@ -1,16 +1,16 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Post, PostProps } from './Post';
+import { Textarea, TextareaProps } from './Textarea';
 import { withRouter } from 'storybook-addon-react-router-v6';
 import { ITweets } from '../../types/ITweets';
 
 export default {
-  title: 'Components/Post',
-  component: Post,
+  title: 'Form Components/Textarea',
+  component: Textarea,
   decorators: [withRouter],
   args: {
-    placeholder: "What's happening"
+    placeholder: "What's happening",
   },
   argType: {},
-} as Meta<PostProps>
+} as Meta<TextareaProps>
 
-export const Default: StoryObj<PostProps> = {}
+export const Default: StoryObj<TextareaProps> = {}

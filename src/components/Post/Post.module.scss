@@ -3,15 +3,6 @@
     flex-grow: 1;
   }
 
-  &__text {
-    word-break: break-word;
-    cursor: text;
-
-    &[contentEditable=true]:empty:before {
-      content: attr(data-placeholder)
-    }
-  }
-
   &__icons:first-child {
     margin-left: -0.5rem;
   }

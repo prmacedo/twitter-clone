@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
 import { Icon } from "../Icon/Icon";
 import { Navlink } from "../Navlink/Navlink";
-import { ShortProfile } from "../ShortProfile/ShortProfile";
+import { ShortProfile } from "../Profile/ShortProfile/ShortProfile";
 
 import profilePic from "../../imgs/profile-pic-1.png";
 import { useUser } from "../../context/UserContext/UserContext";

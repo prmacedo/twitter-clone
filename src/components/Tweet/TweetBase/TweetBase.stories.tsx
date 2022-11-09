@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Tweet } from "./Tweet";
+import { TweetBase } from "./TweetBase";
 import { withRouter } from 'storybook-addon-react-router-v6';
-import { ITweets } from '../../types/ITweets';
-import { tweetsMock } from '../../mockup/Tweets';
+import { ITweets } from '../../../types/ITweets';
+import { tweetsMock } from '../../../mockup/Tweets';
 
 export default {
-  title: 'Components/Tweet',
-  component: Tweet,
+  title: 'Components/Tweet/Base',
+  component: TweetBase,
   decorators: [withRouter],
   args: {
     ...tweetsMock[0]

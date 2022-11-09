@@ -20,12 +20,13 @@ function ModalContainer({ children }: ModalContainerProps) {
 
 export interface ModalContentProps {
   children: ReactNode;
+  className?: string;
 }
 
 
-function ModalContent({ children }: ModalContentProps) {
+function ModalContent({ children, className }: ModalContentProps) {
   return (
-    <div className="flex flex-col justify-center p-12 rounded-lg bg-white dark:bg-dark-1 shadow-lg shadow-dark-1 relative">
+    <div className={["flex flex-col justify-center p-12 rounded-lg bg-white dark:bg-dark-1 shadow-lg shadow-dark-1 relative", className].join(" ")}>
       { children }
     </div>
   )

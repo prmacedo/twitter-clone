@@ -2,39 +2,34 @@ import React, { useState } from 'react';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Text } from '../Text/Text';
-import { TweetProps } from '../Tweet/Tweet';
 import { Modal } from '../Modal/Modal';
 import { useFeed } from '../../context/FeedContext/FeedContext';
 import { useUser } from '../../context/UserContext/UserContext';
+import { v4 as uuidv4 } from 'uuid';
 
 import styles from './Post.module.scss';
 
 import defaultPofilePic from '../../imgs/default-profile-pic.svg';
 import { Heading } from '../Heading/Heading';
 import { Link } from 'react-router-dom';
+import { ITweets } from '../../types/ITweets';
+import { Textarea } from '../Textarea/Textarea';
+import clsx from 'clsx';
 
-export function Post() {
+export interface PostProps {
+  id: string;
+  placeholder: string;
+  tweet?: ITweets;
+}
+
+export function Post({ id, placeholder, tweet = undefined }: PostProps) {
   const [isEmpty, setIsEmpty] = useState(true);
   const [selectedImage, setSelectedImage] = useState<Blob | null>();
   const [isOpen, setIsOpen] = useState(false);
+  const [text, setText] = useState('');
 
-  const { setTweets } = useFeed();
+  const { updateTweets } = useFeed();
   const { user, isLoggedIn } = useUser();
-
-  const characterLimit = 380;
-  const allowedKeys = ['Backspace', 'Delete', 'Up', 'ArrowUp', 'Down', 'ArrowDown', 'Left', 'ArrowLeft', 'Right', 'ArrowRight', 'Home', 'End']
-
-  function limitCharacterNumber(evt: React.KeyboardEvent<HTMLDivElement>) {
-    const target = evt.currentTarget;
-    const text = target.textContent || '';
-
-    // When the limit is reached only allow a list of specific keys and combinations with the ctrl key
-    if ((Number(text?.length) > characterLimit) && (allowedKeys.indexOf(evt.key) < 0) && !evt.ctrlKey) {
-      evt.preventDefault();
-    }
-
-    setIsEmpty( text.length === 0 );
-  }
 
   function handleUploadImage(evt: React.ChangeEvent<HTMLInputElement>) {
     if (evt.target.files) {
@@ -59,52 +54,67 @@ export function Post() {
       return;
     }
 
-    const dataList = JSON.parse(String(localStorage.getItem('tweets'))) || [];
-    const text = document.querySelector(`.${styles.post__text}`) as Element;
-
-    console.log(text);
-
+    const dataList = JSON.parse(String(localStorage.getItem('tweets'))) || [] as ITweets[];
 
     const data = {
-      name: 'Davide Biscuso',
-      user: '@biscuttu',
-      time: new Date(),
-      description: text?.textContent,
-      profilePic: user.profilePic,
-    } as TweetProps;
+      id: uuidv4(),
+      userId: user.id,
+      description: text,
+      time: new Date().getTime(),
+      likes: [],
+      comments: [],
+      retweets: 0,
+      share: 0
+    } as ITweets;
+
 
     if (selectedImage) {
       getBase64(selectedImage)
       .then(base64 => {
         data.img = base64 as string;
-        console.log(data.img);
 
-        dataList.unshift(data);
-        setTweets(dataList);
+        if (tweet) {
+          dataList.map((dataItem: ITweets) => (dataItem.id === tweet?.id) ? dataItem.comments.unshift(data) : dataItem )
+        } else {
+          dataList.unshift(data);
+        }
+
+        updateTweets(dataList);
       })
     } else {
-      dataList.unshift(data);
-      setTweets(dataList);
+      if (tweet) {
+        dataList.map((dataItem: ITweets) => (dataItem.id === tweet?.id) ? dataItem.comments.unshift(data) : dataItem )
+      } else {
+        dataList.unshift(data);
+      }
+      updateTweets(dataList);
     }
 
     setSelectedImage(null);
-    setIsEmpty(true)
-    text.textContent = '';
+    setIsEmpty(true);
+    setText('');
   }
 
   return (
     <>
-      <div className="post flex gap-x-3 px-4 py-2.5">
+      <div
+        className={
+          clsx("post flex gap-x-3", {
+            "px-4 py-2.5": !tweet,
+            "mt-3": tweet
+          })
+        }
+      >
         <img src={ user.profilePic || defaultPofilePic } alt="User profile picture" className="w-12 rounded-full self-start" />
 
         <div className={[styles.post__content, "max-w-full"].join(' ')}>
-          <div
-            className={[styles.post__text ,"flex text-dark-5 dark:text-dark-6 text-2xl bg-transparent outline-none w-full mb-4"].join(' ')}
-            onKeyDown = { (evt) => limitCharacterNumber(evt) }
-            onKeyUp = { (evt) => setIsEmpty( evt.currentTarget.textContent?.length === 0 ) }
-            contentEditable
-            suppressContentEditableWarning
-            data-placeholder="What's happening"
+          <Textarea
+            id={id}
+            isEmpty
+            setIsEmpty={setIsEmpty}
+            value={text}
+            setValue={setText}
+            placeholder={placeholder}
           />
 
           { selectedImage &&

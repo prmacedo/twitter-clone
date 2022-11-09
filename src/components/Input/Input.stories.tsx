@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { Input, InputProps } from './Input'
 
 export default {
-  title: 'Components/Input',
+  title: 'Form Components/Input',
   component: Input,
   args: {
     type: "text",

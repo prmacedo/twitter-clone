@@ -1,21 +1,23 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Follow } from '../../components/Follow/Follow';
-import { Footer } from '../../components/Footer/Footer';
+import { FollowItem } from '../../components/List/FollowItem/FollowItem';
 import { Header } from '../../components/Header/Header';
 import { Heading } from '../../components/Heading/Heading';
 import { List } from '../../components/List/List';
-import { NewsItem } from '../../components/NewsItem/NewsItem';
+import { NewsItem } from '../../components/List/NewsItem/NewsItem';
 import { Profile as ProfileComponent } from '../../components/Profile/Profile';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { Sidemenu } from '../../components/Sidemenu/Sidemenu';
 import { TabBar } from '../../components/TabBar/TabBar';
 import { Text } from '../../components/Text/Text';
 import { Tweet } from '../../components/Tweet/Tweet';
+import { useFeed } from '../../context/FeedContext/FeedContext';
 import { useUser } from '../../context/UserContext/UserContext';
 
 export function Profile() {
-  const { isLoggedIn } = useUser();
+  const { isLoggedIn, user } = useUser();
+  const { tweets } = useFeed();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,23 +48,17 @@ export function Profile() {
 
             <TabBar activeTab='tweets' />
 
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-1.png"
-              name="Davide Biscuso"
-              profilePic="src/imgs/profile-pic-1.png"
-              time={new Date(new Date().setSeconds(-3))}
-              user="@biscutto"
-            />
+            {
+              tweets.map(
+                tweet => tweet.userId === user.id &&
+                <Tweet key={tweet.id} {...tweet} />
+              )
+            }
 
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-2.png"
-              name="Davide Biscuso"
-              profilePic="src/imgs/profile-pic-1.png"
-              time={new Date(new Date().setSeconds(-3))}
-              user="@biscutto"
-            />
+            {
+              tweets.find(tweet => tweet.userId === user.id ) ? '' :
+              <Text className='text-center mt-5 block'>No tweets yet :(</Text>
+            }
           </div>
 
           <div className="w-[400px]">
@@ -97,12 +93,12 @@ export function Profile() {
               </List>
 
               <List title="Who to follow">
-                <Follow
+                <FollowItem
                   img="src/imgs/profile-pic-2.png"
                   name="Bessie Cooper"
                   user="@alessandroveronezi"
                 />
-                <Follow
+                <FollowItem
                   img="src/imgs/profile-pic-3.png"
                   name="Jenny Wilson"
                   user="@gabrielcantarin"
@@ -113,10 +109,7 @@ export function Profile() {
             </div>
           </div>
         </div>
-
       </main>
-
-      <Footer />
     </div>
   )
 }

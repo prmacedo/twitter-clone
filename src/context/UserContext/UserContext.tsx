@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useContext, useLayoutEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { emptyUser, IUser } from "../../types/IUser";
 
@@ -16,7 +16,7 @@ interface UserContextProviderProps {
 }
 
 const UserContext = createContext<UserContextProps>({
-  user: emptyUser,
+  user: JSON.parse(String(localStorage.getItem("user"))) || emptyUser,
   setUser: () => {},
   login: () => {},
   logout: () => {},
@@ -25,7 +25,7 @@ const UserContext = createContext<UserContextProps>({
 });
 
 export function UserContextProvider({ children }: UserContextProviderProps) {
-  const [ user, setUser ] = useState<IUser>(emptyUser);
+  const [ user, setUser ] = useState<IUser>(JSON.parse(String(localStorage.getItem("user"))) || emptyUser);
   const [ isLoggedIn, setIsLoggedIn ] = useState<boolean>(localStorage.getItem("user") ? true : false);
   const navigate = useNavigate();
 
@@ -47,9 +47,9 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     setIsLoggedIn(false);
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (localStorage.getItem("user")) {
-      setUser(JSON.parse((localStorage.getItem("user") || '')));
+      setUser(JSON.parse(String(localStorage.getItem("user"))));
     } else {
       setUser(emptyUser);
     }
