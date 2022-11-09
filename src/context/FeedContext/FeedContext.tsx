@@ -1,9 +1,10 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-import { TweetProps } from '../../components/Tweet/Tweet';
+import { tweetsMock } from '../../mockup/Tweets';
+import { ITweets } from '../../types/ITweets';
 
 interface FeedContextProps {
-  tweets: TweetProps[];
-  setTweets: React.Dispatch<React.SetStateAction<TweetProps[]>>;
+  tweets: ITweets[];
+  setTweets: React.Dispatch<React.SetStateAction<ITweets[]>>;
 }
 
 interface FeedContextProviderProps {
@@ -16,11 +17,7 @@ const FeedContext = createContext<FeedContextProps>({
 });
 
 export function FeedContextProvider({ children }: FeedContextProviderProps) {
-  const [tweets, setTweets] = useState<Array <TweetProps>>(JSON.parse(String(localStorage.getItem("tweets"))));
-
-  useEffect(() => {
-    setTweets(JSON.parse(String(localStorage.getItem("tweets"))))
-  }, []);
+  const [tweets, setTweets] = useState<Array <ITweets>>(tweetsMock);
 
   useEffect(() => {
     localStorage.setItem('tweets', JSON.stringify(tweets));

@@ -5,6 +5,7 @@ import { IUser } from "../../types/IUser";
 export interface DataContextProps {
   users: IUser[];
   setUsers: React.Dispatch<React.SetStateAction<IUser[]>>;
+  getUserById: Function;
 }
 
 export interface DataContextProviderProps {
@@ -13,17 +14,24 @@ export interface DataContextProviderProps {
 
 const DataContext = createContext<DataContextProps>({
   users: [],
-  setUsers: () => {}
+  setUsers: () => {},
+  getUserById: () => {}
 });
 
 export function DataContextProvider({ children }: DataContextProviderProps) {
   const [ users, setUsers ] = useState<IUser[]>(usersMock);
 
+  function getUserById(id: string) {
+    const user = users.find(user => user.id === id) as IUser;
+    return user;
+  }
+
   return (
     <DataContext.Provider
       value={{
         users,
-        setUsers
+        setUsers,
+        getUserById
       }}
     >
       { children }
@@ -33,6 +41,6 @@ export function DataContextProvider({ children }: DataContextProviderProps) {
 
 export function useData() {
   const context = useContext(DataContext);
-  const { users, setUsers } = context;
-  return { users, setUsers };
+  const { users, setUsers, getUserById } = context;
+  return { users, setUsers, getUserById };
 }
