@@ -37,7 +37,10 @@ export function Home() {
               <Header.RightIcon />
             </Header.Root>
 
-            <Post />
+            <Post
+              id="postTweet"
+              placeholder="What's happening"
+            />
 
             <Spacer />
 
