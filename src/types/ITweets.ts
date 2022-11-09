@@ -4,7 +4,7 @@ import { ILikes } from "./ILikes";
 export interface ITweets {
   id: string;
   userId: string;
-  time: Date;
+  time: number;
   description: string;
   img?: string;
   likes: ILikes[];
