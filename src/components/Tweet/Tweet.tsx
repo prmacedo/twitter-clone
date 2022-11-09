@@ -1,19 +1,14 @@
 import { Heading } from "../Heading/Heading";
 import { Text } from "../Text/Text";
 import { Icon } from "../Icon/Icon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useData } from "../../context/DataContext/DataContext";
+import { ITweets } from "../../types/ITweets";
+import { IUser } from "../../types/IUser";
+import { useUser } from "../../context/UserContext/UserContext";
 
-export interface TweetProps {
-  name: string;
-  user: string;
-  time: Date;
-  profilePic: string;
-  description: string;
-  img?: string;
-}
-
-const timeDiff = (postTime: Date) => {
+function timeDiff(postTime: Date) {
   const now = new Date();
   // Do your operations
   const seconds = (now.getTime() - postTime.getTime()) / 1000;
@@ -35,18 +30,32 @@ const timeDiff = (postTime: Date) => {
   return timeDiffString;
 }
 
-export function Tweet({ name, user, time, profilePic, description, img }: TweetProps) {
-  const [ wasLiked, setWasLiked ] = useState(false);
+export function Tweet({ id, userId, time, description, img, likes, comments, retweets, share }: ITweets) {
+  const [ wasLikedByCurrentUser, setWasLikedByCurrentUser ] = useState<boolean>();
 
+  const { getUserById } = useData();
+  const { user: loggedUser, isLoggedIn } = useUser();
+
+  const [user, setUser] = useState<IUser>();
+
+  useEffect(() => {
+    setUser(getUserById(userId));
+
+    if(isLoggedIn) {
+      setWasLikedByCurrentUser(likes.find(like => like.userId === loggedUser.id) ? true : false);
+    } else {
+      setWasLikedByCurrentUser(false);
+    }
+  }, []);
 
   return (
     <div className="tweet flex items-start gap-2.5 pl-4 py-2.5 border-t-2 border-dark-7 dark:border-dark-4">
-      <img src={ profilePic } alt={ name } className="w-12 rounded-full" />
+      <img src={ user?.profilePic } alt={ user?.name } className="w-12 rounded-full" />
 
       <div className="feed__content pr-3 w-full">
         <div className="feed__header flex gap-1 items-center mb-1">
-          <Heading size="xs">{ name }</Heading>
-          <Text color="gray">{ user }</Text>
+          <Heading size="xs">{ user?.name }</Heading>
+          <Text color="gray">@{ user?.user }</Text>
           <Text color="gray">·</Text>
           <Text color="gray">{ timeDiff(time) } </Text>
         </div>
@@ -63,28 +72,28 @@ export function Tweet({ name, user, time, profilePic, description, img }: TweetP
           <div className="feed__iconGroup w-1/4">
             <div className="cursor-pointer inline-flex gap-2.5">
               <Icon size="1.125rem" icon="comment" color="gray" />
-              <Text size="xs" color="gray">61</Text>
+              <Text size="xs" color="gray">{ comments.length }</Text>
             </div>
           </div>
 
           <div className="feed__iconGroup w-1/4">
             <div className="cursor-pointer inline-flex gap-2.5">
               <Icon size="1.125rem" icon="retweet" color="gray" />
-              <Text size="xs" color="gray">12</Text>
+              <Text size="xs" color="gray">{ retweets }</Text>
             </div>
           </div>
 
           <div className="feed__iconGroup w-1/4">
-            <div className="cursor-pointer inline-flex gap-2.5"  onClick={() => setWasLiked(!wasLiked)}>
-              <Icon size="1.125rem" icon='like' fill={ wasLiked } color={ wasLiked ? 'red' : 'gray' } />
-              <Text size="xs" color={ wasLiked ? 'red' : 'gray' }>6.2k</Text>
+            <div className="cursor-pointer inline-flex gap-2.5"  onClick={() => setWasLikedByCurrentUser(!wasLikedByCurrentUser)}>
+              <Icon size="1.125rem" icon='like' fill={ wasLikedByCurrentUser } color={ wasLikedByCurrentUser ? 'red' : 'gray' } />
+              <Text size="xs" color={ wasLikedByCurrentUser ? 'red' : 'gray' }>{ likes.length }</Text>
             </div>
           </div>
 
           <div className="feed__iconGroup w-1/4">
             <div className="cursor-pointer inline-flex gap-2.5">
               <Icon size="1.125rem" icon="share" color="gray" />
-              <Text size="xs" color="gray">61</Text>
+              <Text size="xs" color="gray">{ share }</Text>
             </div>
           </div>
         </div>

@@ -42,44 +42,10 @@ export function Home() {
             <Spacer />
 
             {
-              tweets?.map((tweet, index) => (
-                <Tweet key={index}
-                  description={tweet.description}
-                  img={tweet.img || ''}
-                  name={tweet.name}
-                  profilePic={tweet.profilePic}
-                  time={new Date(tweet.time)}
-                  user={tweet.user}
-                />
-              ))
+              tweets.length > 0 ?
+              tweets?.map(tweet => <Tweet key={tweet.id} {...tweet} />) :
+              <Text className='text-center mt-5 block'>No tweets yet :(</Text>
             }
-
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-1.png"
-              name="Darlene Robertson"
-              profilePic="src/imgs/profile-pic-4.png"
-              time={new Date(new Date().setSeconds(-3))}
-              user="@johndoe"
-            />
-
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-2.png"
-              name="Devon Lane"
-              profilePic="src/imgs/profile-pic-5.png"
-              time={new Date(new Date().setSeconds(-60))}
-              user="@johndoe"
-            />
-
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-3.jpg"
-              name="Darlene Lane"
-              profilePic="src/imgs/profile-pic-2.png"
-              time={new Date(new Date().setSeconds(-3600))}
-              user="@johndoe"
-            />
           </div>
 
           <div className="w-[400px]">

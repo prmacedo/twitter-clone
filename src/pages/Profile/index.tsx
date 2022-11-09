@@ -12,10 +12,13 @@ import { Sidemenu } from '../../components/Sidemenu/Sidemenu';
 import { TabBar } from '../../components/TabBar/TabBar';
 import { Text } from '../../components/Text/Text';
 import { Tweet } from '../../components/Tweet/Tweet';
+import { useFeed } from '../../context/FeedContext/FeedContext';
 import { useUser } from '../../context/UserContext/UserContext';
 
 export function Profile() {
-  const { isLoggedIn } = useUser();
+  const { isLoggedIn, user } = useUser();
+  const { tweets } = useFeed();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,23 +49,13 @@ export function Profile() {
 
             <TabBar activeTab='tweets' />
 
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-1.png"
-              name="Davide Biscuso"
-              profilePic="src/imgs/profile-pic-1.png"
-              time={new Date(new Date().setSeconds(-3))}
-              user="@biscutto"
-            />
-
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-2.png"
-              name="Davide Biscuso"
-              profilePic="src/imgs/profile-pic-1.png"
-              time={new Date(new Date().setSeconds(-3))}
-              user="@biscutto"
-            />
+            {
+              tweets.find(
+                tweet => tweet.userId === user.id &&
+                <Tweet key={tweet.id} {...tweet} />
+              ) ? '' :
+              <Text className='text-center mt-5 block'>No tweets yet :(</Text>
+            }
           </div>
 
           <div className="w-[400px]">
@@ -115,8 +108,6 @@ export function Profile() {
         </div>
 
       </main>
-
-      <Footer />
     </div>
   )
 }
