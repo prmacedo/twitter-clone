@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Text } from '../Text/Text';
-import { Modal } from '../Modal/Modal';
+import { Modal, resetScroll } from '../Modal/Modal';
 import { useFeed } from '../../context/FeedContext/FeedContext';
 import { useUser } from '../../context/UserContext/UserContext';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,7 +11,7 @@ import styles from './Post.module.scss';
 
 import defaultPofilePic from '../../imgs/default-profile-pic.svg';
 import { Heading } from '../Heading/Heading';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ITweets } from '../../types/ITweets';
 import { Textarea } from '../Textarea/Textarea';
 import clsx from 'clsx';
@@ -30,6 +30,8 @@ export function Post({ id, placeholder, tweet = undefined }: PostProps) {
 
   const { updateTweets } = useFeed();
   const { user, isLoggedIn } = useUser();
+
+  const navigate = useNavigate();
 
   function handleUploadImage(evt: React.ChangeEvent<HTMLInputElement>) {
     if (evt.target.files) {
@@ -93,6 +95,12 @@ export function Post({ id, placeholder, tweet = undefined }: PostProps) {
     setSelectedImage(null);
     setIsEmpty(true);
     setText('');
+  }
+
+  function redirectTo(path: string) {
+    resetScroll();
+    setIsOpen(false);
+    navigate(path);
   }
 
   return (
@@ -166,16 +174,12 @@ export function Post({ id, placeholder, tweet = undefined }: PostProps) {
             <Text size='lg'>Log in or create a new account.</Text>
 
             <div className='flex gap-x-4 mt-4'>
-            <Button style="outline" color="blue" size='medium' className='text-center' asChild>
-              <Link to={"../login"}>
-                Log in
-              </Link>
+            <Button style="outline" color="blue" size='medium' className='text-center cursor-pointer' asChild>
+              <span onClick={() => redirectTo("../login")}>Login</span>
             </Button>
 
-            <Button color="blue" size='medium' className='text-center' asChild>
-              <Link to={"../signup"}>
-                Sign Up
-              </Link>
+            <Button color="blue" size='medium' className='text-center cursor-pointer' asChild>
+              <span onClick={() => redirectTo("../signup")}>Sign Up</span>
             </Button>
             </div>
 

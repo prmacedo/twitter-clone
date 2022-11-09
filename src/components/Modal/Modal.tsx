@@ -36,10 +36,14 @@ export interface ModalCloseButtonProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+export function resetScroll() {
+  document.querySelector('body')?.classList.add("overflow-y-auto");
+  document.querySelector('body')?.classList.remove("overflow-y-hidden");
+}
+
 function ModalCloseButton({ setIsOpen }: ModalCloseButtonProps) {
   function handleClick() {
-    document.querySelector('body')?.classList.add("overflow-y-auto");
-    document.querySelector('body')?.classList.remove("overflow-y-hidden");
+    resetScroll();
     setIsOpen(false);
   }
 

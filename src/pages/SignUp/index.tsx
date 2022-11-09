@@ -4,7 +4,7 @@ import { Button } from "../../components/Button/Button";
 import { Heading } from "../../components/Heading/Heading";
 import { Icon } from "../../components/Icon/Icon";
 import { Input } from "../../components/Input/Input";
-import { Modal } from "../../components/Modal/Modal";
+import { Modal, resetScroll } from "../../components/Modal/Modal";
 import { IOption, Select } from "../../components/Select/Select";
 import { Text } from "../../components/Text/Text";
 
@@ -63,6 +63,7 @@ export function SignUp() {
 
   function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
+    resetScroll();
     setIsOpen(false);
   }
 
