@@ -1,6 +1,7 @@
 
 import clsx from "clsx";
 import { Apple } from "../../icons/Apple";
+import { ArrowDown } from "../../icons/ArrowDown";
 import { Back } from "../../icons/Back";
 import { Bookmark, BookmarkFill } from "../../icons/Bookmark";
 import { Calendar } from "../../icons/Calendar";
@@ -30,7 +31,7 @@ import { Share } from "../../icons/Share";
 import { TopTweet } from "../../icons/TopTweet";
 
 export interface IconOptions {
-  icon: 'apple' | 'back' | 'bookmark' | 'calendar' | 'close' | 'comment' | 'ellipses' | 'emoji' | 'explore' | 'gif' | 'google' | 'home' | 'like' | 'lists' | 'location' | 'logo' | 'media' | 'message' | 'more' | 'notification' | 'poll' | 'profile' | 'retweet' | 'schedule' | 'search' | 'settings' | 'share' | 'top-tweet';
+  icon: 'apple' | 'arrow-down' | 'back' | 'bookmark' | 'calendar' | 'close' | 'comment' | 'ellipses' | 'emoji' | 'explore' | 'gif' | 'google' | 'home' | 'like' | 'lists' | 'location' | 'logo' | 'media' | 'message' | 'more' | 'notification' | 'poll' | 'profile' | 'retweet' | 'schedule' | 'search' | 'settings' | 'share' | 'top-tweet';
 }
 
 export interface IconSettings extends IconOptions {
@@ -56,6 +57,10 @@ export function Icon({ icon, className, color='black', size='1.5rem', fill=false
   switch (icon) {
     case 'apple':
       selectedIcon = <Apple className={classes} size={size}/>
+      break;
+
+      case 'arrow-down':
+      selectedIcon = <ArrowDown className={classes} size={size}/>
       break;
 
     case 'back':
