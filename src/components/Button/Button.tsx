@@ -9,15 +9,17 @@ export interface ButtonProps {
   style?: 'fill' | 'outline';
   color?: 'blue' | 'white' | 'black';
   className?: string;
+  type?: "button" | "submit" | "reset";
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export function Button({size = 'default', children, asChild, style = 'fill', color = 'blue', className, onClick}: ButtonProps){
+export function Button({size = 'default', children, asChild, style = 'fill', color = 'blue', className, type = "button", onClick}: ButtonProps){
   const Comp = asChild ? Slot : 'button';
 
   return (
     <Comp
       onClick={onClick}
+      type={type}
       className={
         clsx(
           `font-sans font-bold text-base px-4 py-2.5 rounded-full duration-300 transition-colors flex items-center justify-center gap-x-2 ${className}`, {

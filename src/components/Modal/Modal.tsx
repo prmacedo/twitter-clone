@@ -7,7 +7,7 @@ export interface ModalContainerProps {
 
 function ModalContainer({ children }: ModalContainerProps) {
   useEffect(() => {
-    document.querySelector('body')?.classList.remove("overflow-y-scroll");
+    document.querySelector('body')?.classList.remove("overflow-y-auto");
     document.querySelector('body')?.classList.add("overflow-y-hidden");
   }, []);
 
@@ -37,14 +37,13 @@ export interface ModalCloseButtonProps {
 
 function ModalCloseButton({ setIsOpen }: ModalCloseButtonProps) {
   function handleClick() {
-    document.querySelector('body')?.classList.add("overflow-y-scroll");
+    document.querySelector('body')?.classList.add("overflow-y-auto");
     document.querySelector('body')?.classList.remove("overflow-y-hidden");
     setIsOpen(false);
   }
 
   return (
-    <
-      button onClick={ () => handleClick() }
+    <button onClick={ () => handleClick() }
       className="rounded-full hover:bg-red/10 active:bg-red/20 absolute top-2 right-2 p-2"
     >
         <Icon icon="close" color="red" />
