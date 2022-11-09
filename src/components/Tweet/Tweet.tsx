@@ -21,6 +21,15 @@ export function Tweet({ id, userId, time, description, img, likes, comments, ret
 
   const [user, setUser] = useState<IUser>();
 
+  function likeInStorybook() {
+    if(!liked) {
+      likes.push({ userId: ''});
+    } else {
+      likes.pop();
+    }
+    setLiked(!liked);
+  }
+
   function timeDiff(postTime: number) {
     const now = new Date();
     const seconds = (now.getTime() - postTime) / 1000;
@@ -42,6 +51,12 @@ export function Tweet({ id, userId, time, description, img, likes, comments, ret
   }
 
   function handleLike() {
+    // If para funcionar no storybook
+    if(!tweets) {
+      likeInStorybook();
+      return;
+    }
+
     if (isLoggedIn && (likeStatus === 'notLiked' || likeStatus === 'unliked')) {
       setLikeStatus('justLiked');
     } else {
@@ -65,6 +80,9 @@ export function Tweet({ id, userId, time, description, img, likes, comments, ret
   }, []);
 
   useEffect(() => {
+    // If para não dar erro no storybook
+    if(!tweets) return;
+
     if(likeStatus === 'justLiked') {
       setLiked(true);
 

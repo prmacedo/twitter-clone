@@ -1,13 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Post, PostProps } from './Post';
+import { Post } from './Post';
+import { withRouter } from 'storybook-addon-react-router-v6';
+import { ITweets } from '../../types/ITweets';
 
 export default {
   title: 'Components/Post',
   component: Post,
-  args: {
-    img: "src/imgs/profile-pic-1.png"
-  },
+  decorators: [withRouter],
+  args: {},
   argType: {},
-} as Meta<PostProps>
+} as Meta<ITweets>
 
-export const Default: StoryObj<PostProps> = {}
+export const Default: StoryObj<ITweets> = {}
