@@ -17,7 +17,7 @@ const FeedContext = createContext<FeedContextProps>({
 });
 
 export function FeedContextProvider({ children }: FeedContextProviderProps) {
-  const [tweets, setTweets] = useState<Array <ITweets>>(tweetsMock);
+  const [tweets, setTweets] = useState<Array <ITweets>>(JSON.parse(String(localStorage.getItem("tweets"))) || tweetsMock);
 
   useEffect(() => {
     localStorage.setItem('tweets', JSON.stringify(tweets));
