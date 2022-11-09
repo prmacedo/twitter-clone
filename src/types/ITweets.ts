@@ -12,3 +12,7 @@ export interface ITweets {
   retweets: number;
   share: number;
 }
+
+export function orderTweetsDesc(a:ITweets, b:ITweets) {
+  return b.time - a.time
+}

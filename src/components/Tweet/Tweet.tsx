@@ -17,7 +17,7 @@ export function Tweet({ id, userId, time, description, img, likes, comments, ret
 
   const { getUserById } = useData();
   const { user: loggedUser, isLoggedIn } = useUser();
-  const { tweets, setTweets } = useFeed();
+  const { tweets, updateTweets } = useFeed();
 
   const [user, setUser] = useState<IUser>();
 
@@ -92,7 +92,7 @@ export function Tweet({ id, userId, time, description, img, likes, comments, ret
         }
         return { ...tweet }
       });
-      setTweets(updatedTweets);
+      updateTweets(updatedTweets);
     } else if(likeStatus === 'unliked') {
       setLiked(false);
 
@@ -103,7 +103,7 @@ export function Tweet({ id, userId, time, description, img, likes, comments, ret
         }
         return { ...tweet }
       });
-      setTweets(updatedTweets);
+      updateTweets(updatedTweets);
 
     }
   }, [likeStatus]);

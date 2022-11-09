@@ -19,7 +19,7 @@ export function Post() {
   const [selectedImage, setSelectedImage] = useState<Blob | null>();
   const [isOpen, setIsOpen] = useState(false);
 
-  const { setTweets } = useFeed();
+  const { updateTweets } = useFeed();
   const { user, isLoggedIn } = useUser();
 
   const characterLimit = 380;
@@ -84,11 +84,11 @@ export function Post() {
         console.log(data.img);
 
         dataList.unshift(data);
-        setTweets(dataList);
+        updateTweets(dataList);
       })
     } else {
       dataList.unshift(data);
-      setTweets(dataList);
+      updateTweets(dataList);
     }
 
     setSelectedImage(null);

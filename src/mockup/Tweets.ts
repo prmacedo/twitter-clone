@@ -1,5 +1,4 @@
-import { ITweets } from "../types/ITweets";
-
+import { ITweets, orderTweetsDesc } from "../types/ITweets";
 
 export const tweetsMock = [
   {
@@ -63,4 +62,4 @@ export const tweetsMock = [
     retweets: 0,
     share: 0,
   },
-] as ITweets[]
+].sort(orderTweetsDesc) as ITweets[];
