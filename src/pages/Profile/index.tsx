@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Follow } from '../../components/Follow/Follow';
-import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
 import { Heading } from '../../components/Heading/Heading';
 import { List } from '../../components/List/List';
@@ -50,10 +49,14 @@ export function Profile() {
             <TabBar activeTab='tweets' />
 
             {
-              tweets.find(
+              tweets.map(
                 tweet => tweet.userId === user.id &&
                 <Tweet key={tweet.id} {...tweet} />
-              ) ? '' :
+              )
+            }
+
+            {
+              tweets.find(tweet => tweet.userId === user.id ) ? '' :
               <Text className='text-center mt-5 block'>No tweets yet :(</Text>
             }
           </div>
@@ -106,7 +109,6 @@ export function Profile() {
             </div>
           </div>
         </div>
-
       </main>
     </div>
   )
