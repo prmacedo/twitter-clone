@@ -17,4 +17,11 @@ export default {
   }
 } as Meta<SidemenuProps>
 
-export const Default: StoryObj = {}
+export const Default: StoryObj = {
+  argTypes: {
+    currentPage: {
+      options: ['explore', 'settings'],
+      control: 'inline-radio'
+    }
+  }
+}
