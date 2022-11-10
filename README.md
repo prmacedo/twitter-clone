@@ -33,7 +33,7 @@ Projeto desenvolvido durante a Sprint 05 do Programa de Bolsas da [Compass.uol](
 - Tweets com no máximo 380 caracteres
 - Tweets com ou sem imagem
 - Telas Home `localhost:5173` e Profile `localhost:5173/profile` navegáveis
-- Telas Log In `localhost:5173/login` e Sign In `localhost:5173/signup` navegáveis
+- Telas Log In `localhost:5173/login` e Sign Up `localhost:5173/signup` navegáveis
 - Tela de página não encontrada `localhost:5173/not-found`
 - Validação e autenticação de Usuário
 - Contabilizar likes
