@@ -52,8 +52,6 @@ export function TweetBase({ id, userId, time, description, img, likes, comments,
         }
       )}>
         <img src={ user?.profilePic || defaultPic } alt={ user?.name || 'Name' } className="w-full rounded-full" />
-        {/* <div className="w-12"> */}
-        {/* </div> */}
 
         <div className="feed__content pr-3 w-full">
           <div className="feed__header flex gap-1 items-center mb-1">
@@ -68,7 +66,7 @@ export function TweetBase({ id, userId, time, description, img, likes, comments,
           </Text>
 
           {
-            (!isMainTweet && img) && <img src={ img } alt={ description } className={clsx("w-full border-2 border-dark-7 dark:border-dark-4 rounded-2xl aspect-video object-cover", {"w-6/12": isComment})} />
+            (!isMainTweet && img) && <img src={ img } alt={ description } className={clsx("w-full border-2 border-dark-7 dark:border-dark-4 rounded-2xl aspect-video object-cover", {"w-60 sm:w-96": isComment})} />
           }
         </div>
 
