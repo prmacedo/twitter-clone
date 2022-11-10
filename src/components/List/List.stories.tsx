@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Follow } from '../Follow/Follow';
-import { NewsItem } from '../NewsItem/NewsItem';
+import { FollowItem } from './FollowItem/FollowItem';
+import { NewsItem } from './NewsItem/NewsItem';
 import { List, ListProps } from "./List";
 import { withRouter } from 'storybook-addon-react-router-v6';
 
 export default {
-  title: 'Components/List',
+  title: 'Components/List/Lists',
   component: List,
   decorators: [withRouter]
 } as Meta
@@ -14,8 +14,8 @@ export const FollowList: StoryObj = {
   args: {
     title: 'Who to follow',
     children: [
-      <Follow name='Bessie Cooper' user='@alessandroveronezi' img='src/imgs/profile-pic-2.png' />,
-      <Follow name='Jenny Wilson' user='@gabrielcantarin' img='src/imgs/profile-pic-3.png' />
+      <FollowItem name='Bessie Cooper' user='@alessandroveronezi' img='src/imgs/profile-pic-2.png' />,
+      <FollowItem name='Jenny Wilson' user='@gabrielcantarin' img='src/imgs/profile-pic-3.png' />
     ]
   }
 }

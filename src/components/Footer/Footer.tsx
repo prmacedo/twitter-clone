@@ -5,7 +5,7 @@ import { Text } from "../Text/Text";
 
 export function Footer(){
   return (
-    <footer className='w-full bg-blue-1 flex justify-center py-3 sticky bottom-0 left-0'>
+    <footer className='w-full bg-blue-1 flex justify-center py-3 fixed bottom-0 left-0'>
       <div className="w-[990px] ml-[275px] flex items-center justify-between">
         <div className="footer__text">
           <Heading color="white">
@@ -18,11 +18,11 @@ export function Footer(){
         </div>
 
         <div className="footer__btnGroup grid grid-cols-2 gap-x-3">
-          <Link to={"not-found"}>
+          <Link to={"../login"}>
             <Button style="outline" color="white">Log in</Button>
           </Link>
 
-          <Link to={"not-found"}>
+          <Link to={"../signup"}>
             <Button color="white">Sign Up</Button>
           </Link>
         </div>

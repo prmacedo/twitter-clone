@@ -19,7 +19,10 @@ module.exports = {
         xl: 19,
         '2xl': 20,
         '3xl': 21,
-        '4xl': 23
+        '4xl': 23,
+        '5xl': 36,
+        '6xl': 42,
+        '7xl': 64,
       },
       colors: {
         'blue-1': '#1DA1F2',
@@ -35,8 +38,13 @@ module.exports = {
         'dark-6': '#8899A6',
         'dark-7': '#EBEEF0',
         'dark-8': '#F7F9FA'
+      },
+      backgroundImage: {
+        signup: "url(src/imgs/signup-bg.png)"
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')
+  ],
 }

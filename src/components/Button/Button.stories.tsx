@@ -22,7 +22,7 @@ export default {
       control: 'inline-radio'
     },
     color: {
-      options: ['blue', 'white'],
+      options: ['blue', 'white', 'black'],
       control: 'inline-radio'
     }
   }

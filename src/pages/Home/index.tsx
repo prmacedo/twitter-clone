@@ -1,26 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { Follow } from "../../components/Follow/Follow";
+import { FollowItem } from "../../components/List/FollowItem/FollowItem";
 import { Footer } from "../../components/Footer/Footer";
 import { Header } from "../../components/Header/Header";
 import { Heading } from "../../components/Heading/Heading";
 import { List } from "../../components/List/List";
-import { NewsItem } from "../../components/NewsItem/NewsItem";
+import { NewsItem } from "../../components/List/NewsItem/NewsItem";
 import { Post } from "../../components/Post/Post";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { Sidemenu } from "../../components/Sidemenu/Sidemenu";
 import { Spacer } from "../../components/Spacer/Spacer";
 import { Text } from "../../components/Text/Text";
-import { Tweet, TweetProps } from "../../components/Tweet/Tweet";
+import { Tweet } from "../../components/Tweet/Tweet";
 import { useFeed } from "../../context/FeedContext/FeedContext";
+import { useUser } from "../../context/UserContext/UserContext";
 
 export function Home() {
   const { tweets } = useFeed();
+  const { isLoggedIn } = useUser();
 
   return (
-    <div className="grid gird-rows-[1fr_auto] h-screen overflow-y-auto">
+    <div className="grid gird-rows-[1fr_auto]">
       <main className="page__container flex justify-center bg-white dark:bg-dark-1">
         <div className="w-[275px]">
-          <Sidemenu currentPage="home" />
+          <Sidemenu currentPage={isLoggedIn ? "home" : "explore"} />
         </div>
 
         <div className="page__content flex">
@@ -28,55 +29,26 @@ export function Home() {
             <Header.Root>
               <Header.Text>
                 <Heading>
-                  Home
+                  {
+                    isLoggedIn ? "Home" : "Explore"
+                  }
                 </Heading>
               </Header.Text>
               <Header.RightIcon />
             </Header.Root>
 
-            <Post img="src/imgs/profile-pic-1.png" />
+            <Post
+              id="postTweet"
+              placeholder="What's happening"
+            />
 
             <Spacer />
 
             {
-              tweets?.map((tweet, index) => (
-                <Tweet key={index}
-                  description={tweet.description}
-                  img={tweet.img || ''}
-                  name={tweet.name}
-                  profilePic={tweet.profilePic}
-                  time={new Date(tweet.time)}
-                  user={tweet.user}
-                />
-              ))
+              tweets.length > 0 ?
+              tweets?.map(tweet => <Tweet key={tweet.id} {...tweet} />) :
+              <Text className='text-center mt-5 block'>No tweets yet :(</Text>
             }
-
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-1.png"
-              name="Darlene Robertson"
-              profilePic="src/imgs/profile-pic-4.png"
-              time={new Date(new Date().setSeconds(-3))}
-              user="@johndoe"
-            />
-
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-2.png"
-              name="Devon Lane"
-              profilePic="src/imgs/profile-pic-5.png"
-              time={new Date(new Date().setSeconds(-60))}
-              user="@johndoe"
-            />
-
-            <Tweet
-              description="Tom is a big hurry."
-              img="src/imgs/feed-3.jpg"
-              name="Darlene Lane"
-              profilePic="src/imgs/profile-pic-2.png"
-              time={new Date(new Date().setSeconds(-3600))}
-              user="@johndoe"
-            />
           </div>
 
           <div className="w-[400px]">
@@ -111,12 +83,12 @@ export function Home() {
               </List>
 
               <List title="Who to follow">
-                <Follow
+                <FollowItem
                   img="src/imgs/profile-pic-2.png"
                   name="Bessie Cooper"
                   user="@alessandroveronezi"
                 />
-                <Follow
+                <FollowItem
                   img="src/imgs/profile-pic-3.png"
                   name="Jenny Wilson"
                   user="@gabrielcantarin"
@@ -129,7 +101,10 @@ export function Home() {
         </div>
       </main>
 
-      <Footer />
+      {
+        !isLoggedIn &&
+        <Footer />
+      }
     </div>
   )
 }

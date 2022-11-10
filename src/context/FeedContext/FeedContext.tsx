@@ -1,9 +1,10 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-import { TweetProps } from '../../components/Tweet/Tweet';
+import { tweetsMock } from '../../mockup/Tweets';
+import { ITweets, orderTweetsDesc } from '../../types/ITweets';
 
 interface FeedContextProps {
-  tweets: TweetProps[];
-  setTweets: React.Dispatch<React.SetStateAction<TweetProps[]>>;
+  tweets: ITweets[];
+  updateTweets: Function;
 }
 
 interface FeedContextProviderProps {
@@ -12,25 +13,25 @@ interface FeedContextProviderProps {
 
 const FeedContext = createContext<FeedContextProps>({
   tweets: JSON.parse(String(localStorage.getItem("tweets"))),
-  setTweets: () => {}
+  updateTweets: () => {}
 });
 
 export function FeedContextProvider({ children }: FeedContextProviderProps) {
-  const [tweets, setTweets] = useState<Array <TweetProps>>(JSON.parse(String(localStorage.getItem("tweets"))));
-
-  useEffect(() => {
-    setTweets(JSON.parse(String(localStorage.getItem("tweets"))))
-  }, []);
+  const [tweets, setTweets] = useState<Array <ITweets>>(JSON.parse(String(localStorage.getItem("tweets"))) || tweetsMock);
 
   useEffect(() => {
     localStorage.setItem('tweets', JSON.stringify(tweets));
   }, [tweets]);
 
+  function updateTweets(tweets: ITweets[]) {
+    setTweets(tweets.sort(orderTweetsDesc));
+  }
+
   return (
     <FeedContext.Provider
       value={{
         tweets,
-        setTweets
+        updateTweets
       }}
     >
       {children}
@@ -40,6 +41,6 @@ export function FeedContextProvider({ children }: FeedContextProviderProps) {
 
 export function useFeed() {
   const context = useContext(FeedContext);
-  const { tweets, setTweets } = context;
-  return { tweets, setTweets };
+  const { tweets, updateTweets } = context;
+  return { tweets, updateTweets };
 }
