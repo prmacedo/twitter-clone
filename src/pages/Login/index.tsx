@@ -17,7 +17,7 @@ export function Login() {
   const { users } = useData();
   const { login, resetUser } = useUser();
 
-  function handleSubmit(evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
 
     if (!loginCredential || !password) {
@@ -46,7 +46,7 @@ export function Login() {
 
         <Heading size="3xl" className="my-9">Log in to Twitter</Heading>
 
-        <form>
+        <form onSubmit={(evt) => handleSubmit(evt)}>
           <Input
             type="text"
             placeholder="Phone number, email address"
@@ -63,7 +63,7 @@ export function Login() {
             className={ clsx("mb-6", { "border-2 border-red": !isValid }) }
           />
 
-          <Button size="big" onClick={ (evt) => handleSubmit(evt) }>Log In</Button>
+          <Button size="big" type="submit">Log In</Button>
         </form>
 
         <div className="flex justify-between mt-10">
