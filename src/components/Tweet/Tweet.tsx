@@ -121,7 +121,7 @@ export function Tweet(tweet: ITweets) {
       {
         showComments &&
         <Modal.Container>
-          <Modal.Content className="w-6/12 max-h-[90vh] overflow-y-auto scrollbar-none">
+          <Modal.Content className="min-w-fit w-6/12 max-h-[90vh] overflow-y-auto scrollbar-none">
             <Modal.CloseButton setIsOpen={setShowComments} />
             <div id="comments">
               <TweetBase {...tweet} isMainTweet />
