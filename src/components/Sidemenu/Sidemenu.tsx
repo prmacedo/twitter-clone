@@ -114,7 +114,7 @@ export function Sidemenu({ currentPage }: SidemenuProps) {
               <Button size="big">Tweet</Button>
             </Link>
 
-            <ShortProfile profilePic={profilePic} />
+            <ShortProfile />
           </>
         }
       </div>

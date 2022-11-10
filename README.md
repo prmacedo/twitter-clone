@@ -19,7 +19,7 @@ Projeto desenvolvido durante a Sprint 05 do Programa de Bolsas da [Compass.uol](
 ## Tecnologias utilizadas
 
 - [ReactJS](https://pt-br.reactjs.org/)
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [SCSS](https://sass-lang.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Storybook](https://storybook.js.org/)
 - [Node.JS](https://nodejs.org/en/)
@@ -33,7 +33,11 @@ Projeto desenvolvido durante a Sprint 05 do Programa de Bolsas da [Compass.uol](
 - Tweets com no máximo 380 caracteres
 - Tweets com ou sem imagem
 - Telas Home `localhost:5173` e Profile `localhost:5173/profile` navegáveis
+- Telas Log In `localhost:5173/login` e Sign In `localhost:5173/signin` navegáveis
 - Tela de página não encontrada `localhost:5173/not-found`
+- Validação e autenticação de Usuário
+- Contabilizar likes
+- Fazer comentários
 
 ## Documentação de cores
 

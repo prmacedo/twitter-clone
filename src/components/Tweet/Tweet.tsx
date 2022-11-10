@@ -24,22 +24,7 @@ export function Tweet(tweet: ITweets) {
 
   const [user, setUser] = useState<IUser>();
 
-  function likeInStorybook() {
-    if(!liked) {
-      likes.push({ userId: ''});
-    } else {
-      likes.pop();
-    }
-    setLiked(!liked);
-  }
-
   function handleLike() {
-    // If para funcionar no storybook
-    if(!tweets) {
-      likeInStorybook();
-      return;
-    }
-
     if (isLoggedIn && (likeStatus === 'notLiked' || likeStatus === 'unliked')) {
       setLikeStatus('justLiked');
     } else {
@@ -66,8 +51,7 @@ export function Tweet(tweet: ITweets) {
   }, []);
 
   useEffect(() => {
-    // If para não dar erro no storybook
-    if(!tweets) return;
+    if(!isLoggedIn) return;
 
     if(likeStatus === 'justLiked') {
       setLiked(true);
