@@ -13,4 +13,4 @@ export default {
   }
 } as Meta<ITweets>
 
-export const Default: StoryObj<ITweets> = {}
+export const Base: StoryObj<ITweets> = {}
