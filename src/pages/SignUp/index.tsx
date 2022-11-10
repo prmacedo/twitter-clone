@@ -33,8 +33,8 @@ export function SignUp() {
     { value: '11', label: 'December'},
   ] as IOption[];
 
-  function getAllDatesInMonth(month: string) {
-    const date = new Date(2022, Number(month), 1);
+  function getAllDatesInMonth(month: string, year: string) {
+    const date = new Date(Number(year), Number(month), 1);
 
     const dates = [];
 
@@ -248,7 +248,7 @@ export function SignUp() {
                 />
 
                 <Select
-                  options={ getAllDatesInMonth(month) }
+                  options={ getAllDatesInMonth(month, year) }
                   placeholder="Day"
                   value={ day }
                   setValue={ setDay }
