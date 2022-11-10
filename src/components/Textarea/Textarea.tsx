@@ -35,7 +35,7 @@ export function Textarea({ id, isEmpty, setIsEmpty, value, setValue, placeholder
 
   useEffect(() => {
     if(value === '') {
-      const textarea = document.querySelector(`.${styles.textarea}`);
+      const textarea = document.querySelector(`#label-${id}`);
       if(textarea) textarea.textContent = "";
     }
   }, [value]);
@@ -44,6 +44,7 @@ export function Textarea({ id, isEmpty, setIsEmpty, value, setValue, placeholder
     <>
       <label
         htmlFor={id}
+        id={`label-${id}`}
         className={[
           styles.textarea,
           clsx({
