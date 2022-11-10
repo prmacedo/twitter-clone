@@ -32,7 +32,7 @@ export function Select({ options, placeholder, value, setValue }: SelectProps) {
         <div className="absolute w-full bg-white dark:bg-dark-1 rounded-md mt-1 max-h-32 overflow-scroll scrollbar-none">
           {
             options.map(option => (
-              <Option value={ option.value } label={ option.label } onClick={() => changeValue(option)} />
+              <Option key={`${option.value}-${option.label}`} value={ option.value } label={ option.label } onClick={() => changeValue(option)} />
             ))
           }
         </div>

@@ -33,8 +33,8 @@ export function SignUp() {
     { value: '11', label: 'December'},
   ] as IOption[];
 
-  function getAllDatesInMonth(month: string, year: number) {
-    const date = new Date(year, Number(month), 1);
+  function getAllDatesInMonth(month: string, year: string) {
+    const date = new Date(Number(year), Number(month), 1);
 
     const dates = [];
 
